@@ -7,21 +7,18 @@ import styles from "@styles/restaurant/Items.module.css";
 export default function Items({ restaurant }) {
   const slug = useRouter().asPath;
 
+  // All appetizers
   const appetizers = restaurant.items.filter(
     (item) => item.type === "appetizers"
   );
 
+  // All mains
   const mains = restaurant.items.filter((item) => item.type === "mains");
 
+  // All dumplings
   const dumplings = restaurant.items.filter(
     (item) => item.type === "dumplings"
   );
-
-  // const description = (description) => {
-  //   if (description.length > 15) {
-  //     return description.split("").slice(0, 60).join("");
-  //   }
-  // };
 
   return (
     <section className={styles.items}>

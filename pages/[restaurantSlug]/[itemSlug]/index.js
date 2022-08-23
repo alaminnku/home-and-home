@@ -1,11 +1,17 @@
+import Item from "@components/item/Item";
 import { data } from "@data/restaurants";
 import { createSlug } from "@utils/index";
 
 export default function ItemPage({ item }) {
-  return <main></main>;
+  return (
+    <main>
+      <Item item={item} />
+    </main>
+  );
 }
 
 export async function getStaticPaths() {
+  // Get all the restaurants and their items
   const restaurantsAndItems = data.map((restaurant) => {
     return restaurant.items.map((item) => {
       return {
@@ -17,6 +23,7 @@ export async function getStaticPaths() {
     });
   });
 
+  // Flat the array
   const paths = restaurantsAndItems.flat();
 
   return {
@@ -28,10 +35,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
+  // Find the restaurant
   const restaurant = data.find(
     (restaurant) => createSlug(restaurant.name) === restaurantSlug
   );
 
+  // Find the item in the restaurant
   const item = restaurant.items.find(
     (fItem) => createSlug(fItem.name) === itemSlug
   );

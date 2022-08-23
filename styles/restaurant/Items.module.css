@@ -30,13 +30,14 @@
 .title {
   margin-bottom: 0.25rem;
   color: var(--black);
+  font-weight: 500;
 }
 
 .description {
   font-size: 0.8rem;
   color: var(--grey);
   margin-bottom: 0.5rem;
-  text-align: justify;
+  /* text-align: justify; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -46,6 +47,7 @@
 .price {
   font-size: 0.75rem;
   color: var(--black);
+  font-weight: 500;
 }
 
 .image {

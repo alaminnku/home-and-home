@@ -1,0 +1,126 @@
+.item {
+  margin-bottom: 6rem;
+}
+
+.header {
+  padding: 0.75rem;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background: var(--almost_white);
+}
+
+.icon svg {
+  font-size: 1.25rem;
+  color: var(--light_grey);
+}
+
+.quantity {
+  font-weight: 500;
+  padding: 0rem 1rem;
+}
+
+.active {
+  background: var(--border_color);
+}
+
+.active.minus svg {
+  color: var(--black);
+}
+
+.plus {
+  background: var(--border_color);
+}
+
+.plus svg {
+  color: var(--black);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 0.75rem;
+  background: var(--white);
+  border-top: 1px solid var(--border_color);
+}
+
+.button button {
+  display: block;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--black);
+  padding: 0.75rem 1.25rem;
+}
+
+@media (min-width: 375px) {
+  .header {
+    margin-bottom: 1rem;
+  }
+
+  .button {
+    height: 4.5rem;
+  }
+
+  .button button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 390px) {
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 414px) {
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .button {
+    height: 5rem;
+  }
+
+  .button button {
+    padding: 1rem 1.5rem;
+  }
+}
