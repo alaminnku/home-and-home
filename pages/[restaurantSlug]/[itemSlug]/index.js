@@ -1,5 +1,5 @@
 import Item from "@components/item/Item";
-import { data } from "@data/restaurants";
+import restaurants from "@data/restaurants";
 import { createSlug } from "@utils/index";
 
 export default function ItemPage({ item }) {
@@ -12,7 +12,7 @@ export default function ItemPage({ item }) {
 
 export async function getStaticPaths() {
   // Get all the restaurants and their items
-  const restaurantsAndItems = data.map((restaurant) => {
+  const restaurantsAndItems = restaurants.map((restaurant) => {
     return restaurant.items.map((item) => {
       return {
         params: {
@@ -36,7 +36,7 @@ export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
   // Find the restaurant
-  const restaurant = data.find(
+  const restaurant = restaurants.find(
     (restaurant) => createSlug(restaurant.name) === restaurantSlug
   );
 

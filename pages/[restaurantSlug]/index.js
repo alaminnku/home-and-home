@@ -1,4 +1,4 @@
-import { data } from "@data/restaurants";
+import restaurants from "@data/restaurants";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import { createSlug } from "@utils/index";
@@ -14,7 +14,7 @@ export default function RestaurantPage({ restaurant }) {
 
 export async function getStaticPaths() {
   // Restaurant name slugs
-  const slugs = data.map((restaurant) => {
+  const slugs = restaurants.map((restaurant) => {
     return {
       params: {
         restaurantSlug: createSlug(restaurant.name),
@@ -33,7 +33,7 @@ export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
   // Find the restaurant with slug
-  const restaurant = data.find(
+  const restaurant = restaurants.find(
     (restaurant) => createSlug(restaurant.name) === restaurantSlug
   );
 

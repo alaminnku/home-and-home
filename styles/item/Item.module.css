@@ -30,10 +30,12 @@
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
+  pointer-events: none;
   align-items: center;
   justify-content: center;
   border-radius: 100%;
   background: var(--almost_white);
+  transition: all 0.15s ease;
 }
 
 .icon svg {
@@ -47,6 +49,7 @@
 }
 
 .active {
+  pointer-events: all;
   background: var(--border_color);
 }
 
@@ -55,6 +58,7 @@
 }
 
 .plus {
+  pointer-events: all;
   background: var(--border_color);
 }
 

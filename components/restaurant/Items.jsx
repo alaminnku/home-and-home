@@ -27,7 +27,7 @@ export default function Items({ restaurant }) {
         {appetizers.map((appetizer) => (
           <Link
             href={`${slug}/${createSlug(appetizer.name)}`}
-            key={Math.random() * 100000}
+            key={appetizer.id}
           >
             <a className={styles.product}>
               <div className={styles.header}>
@@ -52,10 +52,7 @@ export default function Items({ restaurant }) {
       <div className={styles.item}>
         <h2>Mains</h2>
         {mains.map((main) => (
-          <Link
-            href={`${slug}/${createSlug(main.name)}`}
-            key={Math.random() * 100000}
-          >
+          <Link href={`${slug}/${createSlug(main.name)}`} key={main.id}>
             <a className={styles.product}>
               <div className={styles.header}>
                 <p className={styles.title}>{main.name}</p>
@@ -79,10 +76,7 @@ export default function Items({ restaurant }) {
       <div className={styles.item}>
         <h2>Dumplings</h2>
         {dumplings.map((dumpling) => (
-          <Link
-            href={`${slug}/${createSlug(dumpling.name)}`}
-            key={Math.random() * 100000}
-          >
+          <Link href={`${slug}/${createSlug(dumpling.name)}`} key={dumpling.id}>
             <a className={styles.product}>
               <div className={styles.header}>
                 <p className={styles.title}>{dumpling.name}</p>
