@@ -6,7 +6,22 @@ import styles from "@styles/restaurant/Items.module.css";
 
 export default function Items({ restaurant }) {
   const slug = useRouter().asPath;
-  const { appetizers, mains, dumplings } = restaurant.items;
+
+  const appetizers = restaurant.items.filter(
+    (item) => item.type === "appetizers"
+  );
+
+  const mains = restaurant.items.filter((item) => item.type === "mains");
+
+  const dumplings = restaurant.items.filter(
+    (item) => item.type === "dumplings"
+  );
+
+  // const description = (description) => {
+  //   if (description.length > 15) {
+  //     return description.split("").slice(0, 60).join("");
+  //   }
+  // };
 
   return (
     <section className={styles.items}>
@@ -19,8 +34,9 @@ export default function Items({ restaurant }) {
           >
             <a className={styles.product}>
               <div className={styles.header}>
-                <p>{appetizer.name}</p>
-                <p>LKR {appetizer.price}</p>
+                <p className={styles.title}>{appetizer.name}</p>
+                <p className={styles.description}>{appetizer.description}</p>
+                <p className={styles.price}>LKR {appetizer.price}</p>
               </div>
               <div className={styles.image}>
                 <Image
@@ -45,8 +61,9 @@ export default function Items({ restaurant }) {
           >
             <a className={styles.product}>
               <div className={styles.header}>
-                <p>{main.name}</p>
-                <p>LKR {main.price}</p>
+                <p className={styles.title}>{main.name}</p>
+                <p className={styles.description}>{main.description}</p>
+                <p className={styles.price}>LKR {main.price}</p>
               </div>
               <div className={styles.image}>
                 <Image
@@ -71,8 +88,9 @@ export default function Items({ restaurant }) {
           >
             <a className={styles.product}>
               <div className={styles.header}>
-                <p>{dumpling.name}</p>
-                <p>LKR {dumpling.price}</p>
+                <p className={styles.title}>{dumpling.name}</p>
+                <p className={styles.description}>{dumpling.description}</p>
+                <p className={styles.price}>LKR {dumpling.price}</p>
               </div>
               <div className={styles.image}>
                 <Image

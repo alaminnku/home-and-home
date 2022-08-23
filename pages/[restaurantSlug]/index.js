@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   const slugs = data.map((restaurant) => {
     return {
       params: {
-        slug: createSlug(restaurant.name),
+        restaurantSlug: createSlug(restaurant.name),
       },
     };
   });
@@ -29,10 +29,12 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getStaticProps({ params }) {
+  const { restaurantSlug } = params;
+
   // Find the restaurant with slug
   const restaurant = data.find(
-    (restaurant) => restaurant.name.toLowerCase() === slug.split("-").join(" ")
+    (restaurant) => createSlug(restaurant.name) === restaurantSlug
   );
 
   // Return the restaurant

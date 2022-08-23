@@ -3,33 +3,49 @@
 }
 
 .item {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.item:last-child {
+  margin-bottom: 0rem;
 }
 
 .item h2 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
 .product {
   margin-bottom: 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 .header {
   width: 75%;
+  margin-right: 1rem;
 }
 
-.header p:first-child {
-  font-size: 0.9rem;
+.title {
   margin-bottom: 0.25rem;
   color: var(--black);
 }
 
-.header p:last-child {
-  font-size: 0.75rem;
+.description {
+  font-size: 0.8rem;
   color: var(--grey);
+  margin-bottom: 0.5rem;
+  text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.price {
+  font-size: 0.75rem;
+  color: var(--black);
 }
 
 .image {
