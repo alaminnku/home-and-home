@@ -55,6 +55,7 @@ export function CartProvider({ children }) {
         }
       });
     }
+
     setCartItems(updatedItems);
 
     localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));

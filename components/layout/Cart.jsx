@@ -96,6 +96,7 @@ export default function Cart() {
               >
                 <div className={styles.quantity_and_name}>
                   <p className={styles.quantity}>{cartItem.quantity}</p>
+
                   <Link
                     href={`/${restaurantSlug}/${createSlug(cartItem.name)}`}
                   >

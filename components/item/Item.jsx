@@ -4,8 +4,10 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { useCart } from "@contexts/CartContext";
 import { useEffect, useState } from "react";
 import styles from "@styles/item/Item.module.css";
+import { useRouter } from "next/router";
 
 export default function Item({ item }) {
+  const router = useRouter();
   const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
