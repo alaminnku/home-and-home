@@ -30,7 +30,7 @@
 .title {
   margin-bottom: 0.25rem;
   color: var(--black);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .description {
@@ -46,7 +46,7 @@
 .price {
   font-size: 0.75rem;
   color: var(--black);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .image {
@@ -60,7 +60,7 @@
   font-size: 14px;
   cursor: pointer;
   width: 100%;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--white);
   background: var(--black);
   padding: 0.75rem 1.25rem;
