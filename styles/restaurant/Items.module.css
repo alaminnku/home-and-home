@@ -51,6 +51,21 @@
 
 .image {
   width: 25%;
+  position: relative;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  color: var(--white);
+  background: var(--black);
 }
 
 .button {
