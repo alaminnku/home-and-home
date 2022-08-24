@@ -2,12 +2,15 @@ import restaurants from "@data/restaurants";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import { createSlug } from "@utils/index";
+import Cart from "@components/layout/Cart";
+import { useCart } from "@contexts/CartContext";
 
 export default function RestaurantPage({ restaurant }) {
   return (
     <main>
       <Hero restaurant={restaurant} />
       <Items restaurant={restaurant} />
+      <Cart />
     </main>
   );
 }

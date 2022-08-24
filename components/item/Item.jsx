@@ -52,37 +52,39 @@ export default function Item({ item }) {
   }
   return (
     <section className={styles.item}>
-      <div className={styles.banner}>
-        <Image
-          src={item.image}
-          width={16}
-          height={10}
-          layout="responsive"
-          objectFit="cover"
-        />
-      </div>
-
-      <div className={styles.header}>
-        <h1 className={styles.title}>{item.name}</h1>
-        <p className={styles.description}>{item.description}</p>
-        <p className={styles.price}>LKR {item.price}</p>
-      </div>
-
-      <div className={styles.controller}>
-        <div
-          className={`${styles.minus} ${styles.icon} ${
-            quantity > 1 && styles.active
-          }`}
-          onClick={decreaseQuantity}
-        >
-          <AiOutlineMinus />
+      <div className={styles.item_top}>
+        <div className={styles.banner}>
+          <Image
+            src={item.image}
+            width={16}
+            height={10}
+            layout="responsive"
+            objectFit="cover"
+          />
         </div>
-        <p className={styles.quantity}>{quantity}</p>
-        <div
-          className={`${styles.plus} ${styles.icon}`}
-          onClick={increaseQuantity}
-        >
-          <AiOutlinePlus />
+
+        <div className={styles.header}>
+          <h1 className={styles.title}>{item.name}</h1>
+          <p className={styles.description}>{item.description}</p>
+          <p className={styles.price}>LKR {item.price}</p>
+        </div>
+
+        <div className={styles.controller}>
+          <div
+            className={`${styles.minus} ${styles.icon} ${
+              quantity > 1 && styles.active
+            }`}
+            onClick={decreaseQuantity}
+          >
+            <AiOutlineMinus />
+          </div>
+          <p className={styles.quantity}>{quantity}</p>
+          <div
+            className={`${styles.plus} ${styles.icon}`}
+            onClick={increaseQuantity}
+          >
+            <AiOutlinePlus />
+          </div>
         </div>
       </div>
 

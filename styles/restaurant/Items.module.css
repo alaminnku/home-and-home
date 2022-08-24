@@ -37,7 +37,6 @@
   font-size: 0.8rem;
   color: var(--grey);
   margin-bottom: 0.5rem;
-  /* text-align: justify; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -52,4 +51,29 @@
 
 .image {
   width: 25%;
+}
+
+.button {
+  position: sticky;
+  bottom: 1.25rem;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--black);
+  padding: 0.75rem 1.25rem;
+}
+
+@media (min-width: 375px) {
+  .button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 414px) {
+  .button {
+    padding: 1rem 1.5rem;
+  }
 }

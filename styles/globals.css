@@ -54,6 +54,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  min-height: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
 h1,
 h2 {
   line-height: 1.5em;

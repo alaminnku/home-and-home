@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "@styles/restaurant/Hero.module.css";
 
 export default function Hero({ restaurant }) {
-  const { name, description, address, banner } = restaurant;
+  const { name, address, banner } = restaurant;
   return (
     <section>
       <div className={styles.banner}>

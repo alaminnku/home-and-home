@@ -1,5 +1,12 @@
 .item {
-  margin-bottom: 6rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item_top {
+  margin-bottom: 2rem;
 }
 
 .header {
@@ -32,6 +39,7 @@
   display: flex;
   pointer-events: none;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
   border-radius: 100%;
   background: var(--almost_white);
@@ -67,12 +75,8 @@
 }
 
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 4rem;
-  width: 100%;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   padding: 0.75rem;
   background: var(--white);
@@ -80,10 +84,10 @@
 }
 
 .button button {
-  display: block;
-  width: 100%;
   border: none;
   font-size: 14px;
+  width: 100%;
+  cursor: pointer;
   font-weight: 500;
   color: var(--white);
   background: var(--black);
@@ -118,6 +122,10 @@
 @media (min-width: 414px) {
   .header {
     margin-bottom: 2.5rem;
+  }
+
+  .controller {
+    margin-bottom: 5rem;
   }
 
   .button {

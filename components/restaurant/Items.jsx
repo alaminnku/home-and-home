@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { createSlug } from "@utils/index";
 import styles from "@styles/restaurant/Items.module.css";
+import { useCart } from "@contexts/CartContext";
 
 export default function Items({ restaurant }) {
   const slug = useRouter().asPath;
+  const { openCart, cartItems, totalCartQuantity } = useCart();
 
   // All appetizers
   const appetizers = restaurant.items.filter(
@@ -96,6 +98,12 @@ export default function Items({ restaurant }) {
           </Link>
         ))}
       </div>
+
+      {cartItems.length > 0 && (
+        <button className={styles.button} onClick={openCart}>
+          View basket ({totalCartQuantity})
+        </button>
+      )}
     </section>
   );
 }

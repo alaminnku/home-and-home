@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Cart from "@components/layout/Cart";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
@@ -7,25 +8,33 @@ export const useCart = () => useContext(CartContext);
 
 export function CartProvider({ children }) {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+
+  // Restaurant slug
+  const restaurantSlug = router.query.restaurantSlug;
 
   // Get cart items from local storage on app reload
   useEffect(() => {
-    // Restaurant slug
-    const restaurantSlug = router.query.restaurantSlug;
-
-    // Items from local storage
-    const localItems = JSON.parse(localStorage.getItem("cart-items"));
-
     // Update cart items
-    setCartItems(
-      localItems?.some(
-        (localItem) => localItem.restaurantSlug === restaurantSlug
-      )
-        ? localItems
-        : []
-    );
+    setCartItems(JSON.parse(localStorage.getItem(`${restaurantSlug}`)) || []);
   }, []);
+
+  // Cart open and close functions
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
+
+  // Calculate total quantity
+  const totalCartQuantity = cartItems.reduce(
+    (quantity, currItem) => quantity + currItem.quantity,
+    0
+  );
+
+  // Calculate total price
+  const totalCartPrice = cartItems.reduce(
+    (price, currItem) => parseFloat(price + currItem.price),
+    0
+  );
 
   // Add item to cart
   function addItemToCart(initialItem) {
@@ -48,7 +57,9 @@ export function CartProvider({ children }) {
 
     setCartItems(updatedItems);
 
-    localStorage.setItem("cart-items", JSON.stringify(updatedItems));
+    localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+
+    router.push(`/${restaurantSlug}`);
   }
 
   // Remove item from cart
@@ -60,13 +71,19 @@ export function CartProvider({ children }) {
   return (
     <CartContext.Provider
       value={{
+        isOpen,
+        openCart,
+        closeCart,
         cartItems,
+        totalCartPrice,
+        totalCartQuantity,
         addItemToCart,
         removeItemFromCart,
         checkoutCart,
       }}
     >
       {children}
+      {/* <Cart /> */}
     </CartContext.Provider>
   );
 }

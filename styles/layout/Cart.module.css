@@ -1,0 +1,140 @@
+.cart {
+  background: var(--white);
+  position: fixed;
+  bottom: -100%;
+  width: 100vw;
+  max-width: 424px;
+  z-index: 11;
+  transition: 200ms ease-in-out;
+}
+
+.cart.open {
+  bottom: 0;
+}
+
+.restaurant_name {
+  font-weight: 500;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 1rem 0rem;
+  border-bottom: 1px solid var(--border_color);
+}
+
+.item_and_action {
+  padding: 0rem 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  border-bottom: 1px solid var(--border_color);
+}
+
+.item_and_action:last-child {
+  border: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 0.75rem 0rem;
+  transition: width 0.5s ease;
+}
+
+.quantity_and_name {
+  display: flex;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--almost_white);
+}
+
+.name {
+  color: var(--black);
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -5rem;
+  height: 100%;
+  width: 5rem;
+  color: var(--white);
+  background-color: red;
+  transition: right 0.5s ease;
+}
+
+.item.swiped {
+  width: calc(100vw - 6.5rem);
+}
+
+.item.swiped + .action {
+  right: 0;
+}
+
+.button {
+  height: 4rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border_color);
+}
+
+.button button {
+  border: none;
+  font-size: 14px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--black);
+  padding: 0.75rem 1.25rem;
+}
+
+.Overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  max-width: 424px;
+  margin: 0 auto;
+  pointer-events: none;
+  transition: all 250ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Overlay.Open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media (min-width: 375px) {
+  .button {
+    height: 4.5rem;
+  }
+
+  .button button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 414px) {
+  .button {
+    height: 5rem;
+  }
+
+  .button button {
+    padding: 1rem 1.5rem;
+  }
+}
