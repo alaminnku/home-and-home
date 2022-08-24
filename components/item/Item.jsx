@@ -7,7 +7,7 @@ import styles from "@styles/item/Item.module.css";
 import { useRouter } from "next/router";
 
 export default function Item({ item }) {
-  const router = useRouter();
+  const [itemInCart, setItemInCart] = useState();
   const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
@@ -20,16 +20,20 @@ export default function Item({ item }) {
   // Quantity and unit price
   const { quantity, unitPrice } = initialItem;
 
-  // Find this item in cart items
-  const itemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
-
-  // Update the initial item
+  // Update quantity of initial item
+  // and check if the item is in cart
   useEffect(() => {
+    // Find this item in cart
+    const cartItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    // Update states
+    setItemInCart(cartItem);
+
     setInitialItem((prevItem) => ({
       ...prevItem,
-      quantity: itemInCart?.quantity || 1,
+      quantity: cartItem?.quantity || 1,
     }));
-  }, [cartItems]);
+  }, []);
 
   // Increase quantity
   function increaseQuantity() {
