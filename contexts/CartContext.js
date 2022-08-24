@@ -60,6 +60,8 @@ export function CartProvider({ children }) {
     localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
 
     router.push(`/${restaurantSlug}`);
+
+    closeCart();
   }
 
   // Remove item from cart
@@ -80,6 +82,8 @@ export function CartProvider({ children }) {
     localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
 
     router.push(`/${restaurantSlug}`);
+
+    openCart();
   }
 
   // Checkout cart

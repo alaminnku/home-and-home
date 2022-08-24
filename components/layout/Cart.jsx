@@ -79,7 +79,11 @@ export default function Cart() {
 
   return (
     <div>
-      <div className={`${styles.cart} ${isOpen && styles.open}`}>
+      <div
+        className={`${styles.cart} ${
+          cartItems.length > 0 && isOpen && styles.open
+        }`}
+      >
         <p className={styles.restaurant_name}>{restaurantName}</p>
         <div className={styles.items_and_subtotal}>
           {cartItems.map((cartItem) => (
@@ -126,7 +130,9 @@ export default function Cart() {
 
       <div
         onClick={closeCart}
-        className={`${styles.Overlay} ${isOpen && styles.Open}`}
+        className={`${styles.Overlay} ${
+          cartItems.length > 0 && isOpen && styles.Open
+        }`}
       ></div>
     </div>
   );
