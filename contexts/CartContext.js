@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import Cart from "@components/layout/Cart";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -72,6 +71,8 @@ export function CartProvider({ children }) {
     setCartItems(updatedItems);
 
     localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+
+    cartItems.length === 1 && closeCart();
   }
 
   // Remove item from page
@@ -84,7 +85,7 @@ export function CartProvider({ children }) {
 
     router.push(`/${restaurantSlug}`);
 
-    openCart();
+    cartItems.length > 1 ? openCart() : closeCart;
   }
 
   // Checkout cart

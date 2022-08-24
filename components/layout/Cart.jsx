@@ -20,6 +20,8 @@ export default function Cart() {
     isOpen ? (body.style.overflow = "hidden") : (body.style.overflow = null);
   });
 
+  console.log(isOpen);
+
   // Restaurant name
   const { restaurantSlug } = router.query;
   const restaurantName = restaurantSlug.split("-").join(" ");
@@ -77,6 +79,12 @@ export default function Cart() {
     }
   }
 
+  // Push to the item page
+  function pushToTheItemPage(name) {
+    router.push(`/${restaurantSlug}/${createSlug(name)}`);
+    closeCart();
+  }
+
   return (
     <div>
       <div
@@ -96,12 +104,12 @@ export default function Cart() {
               >
                 <div className={styles.quantity_and_name}>
                   <p className={styles.quantity}>{cartItem.quantity}</p>
-
-                  <Link
-                    href={`/${restaurantSlug}/${createSlug(cartItem.name)}`}
+                  <p
+                    className={styles.name}
+                    onClick={() => pushToTheItemPage(cartItem.name)}
                   >
-                    <a className={styles.name}>{cartItem.name}</a>
-                  </Link>
+                    {cartItem.name}
+                  </p>
                 </div>
 
                 <p className={styles.price}>
