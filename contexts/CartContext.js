@@ -85,7 +85,9 @@ export function CartProvider({ children }) {
 
     router.push(`/${restaurantSlug}`);
 
-    cartItems.length > 1 ? openCart() : closeCart;
+    console.log(cartItems.length);
+
+    cartItems.length > 1 && openCart();
   }
 
   // Checkout cart

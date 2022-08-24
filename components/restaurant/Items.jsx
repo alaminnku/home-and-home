@@ -7,7 +7,7 @@ import { useCart } from "@contexts/CartContext";
 
 export default function Items({ restaurant }) {
   const slug = useRouter().asPath;
-  const { openCart, cartItems, totalCartQuantity } = useCart();
+  const { isOpen, openCart, cartItems, totalCartQuantity } = useCart();
 
   // All appetizers
   const appetizers = restaurant.items.filter(
@@ -45,6 +45,11 @@ export default function Items({ restaurant }) {
                   layout="responsive"
                   objectFit="cover"
                 />
+
+                {cartItems.map(
+                  (cartItem) =>
+                    cartItem.id === appetizer.id && <p>{cartItem.quantity}</p>
+                )}
               </div>
             </a>
           </Link>
@@ -69,6 +74,11 @@ export default function Items({ restaurant }) {
                   layout="responsive"
                   objectFit="cover"
                 />
+
+                {cartItems.map(
+                  (cartItem) =>
+                    cartItem.id === main.id && <p>{cartItem.quantity}</p>
+                )}
               </div>
             </a>
           </Link>
@@ -93,13 +103,18 @@ export default function Items({ restaurant }) {
                   layout="responsive"
                   objectFit="cover"
                 />
+
+                {cartItems.map(
+                  (cartItem) =>
+                    cartItem.id === dumpling.id && <p>{cartItem.quantity}</p>
+                )}
               </div>
             </a>
           </Link>
         ))}
       </div>
 
-      {cartItems.length > 0 && (
+      {cartItems.length > 0 && !isOpen && (
         <button className={styles.button} onClick={openCart}>
           View basket ({totalCartQuantity})
         </button>

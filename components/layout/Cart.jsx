@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "@styles/layout/Cart.module.css";
 import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { createSlug } from "@utils/index";
 
 export default function Cart() {
@@ -19,8 +18,6 @@ export default function Cart() {
 
     isOpen ? (body.style.overflow = "hidden") : (body.style.overflow = null);
   });
-
-  console.log(isOpen);
 
   // Restaurant name
   const { restaurantSlug } = router.query;
