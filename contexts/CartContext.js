@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
 
   // Calculate total price
   const totalCartPrice = cartItems.reduce(
-    (price, currItem) => parseFloat(price + currItem.price),
+    (price, currItem) => price + currItem.totalPrice,
     0
   );
 
@@ -48,6 +48,7 @@ export function CartProvider({ children }) {
           return {
             ...cartItem,
             quantity: initialItem.quantity,
+            totalPrice: initialItem.totalPrice,
           };
         } else {
           return cartItem;
@@ -63,7 +64,13 @@ export function CartProvider({ children }) {
   }
 
   // Remove item from cart
-  function removeItemFromCart() {}
+  function removeItemFromCart(itemId) {
+    const updatedItems = cartItems.filter((cartItem) => cartItem.id !== itemId);
+
+    setCartItems(updatedItems);
+
+    localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+  }
 
   // Checkout cart
   function checkoutCart() {}

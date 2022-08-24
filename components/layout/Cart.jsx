@@ -6,7 +6,8 @@ import Link from "next/link";
 
 export default function Cart() {
   const router = useRouter();
-  const { isOpen, closeCart, cartItems } = useCart();
+  const { isOpen, closeCart, cartItems, removeItemFromCart, totalCartPrice } =
+    useCart();
   const [swipedItems, setSwipedItems] = useState([]);
   const [verticalStart, setVerticalStart] = useState(0);
   const [horizontalStart, setHorizontalStart] = useState(0);
@@ -29,8 +30,6 @@ export default function Cart() {
     // Get the target
     const target =
       e.target.localName === "p" ? e.target.parentElement : e.target;
-
-    console.log(target);
 
     // Update swiped items
     setSwipedItems((prevItems) => {
@@ -79,7 +78,7 @@ export default function Cart() {
     <div>
       <div className={`${styles.cart} ${isOpen && styles.open}`}>
         <p className={styles.restaurant_name}>{restaurantName}</p>
-        <div className={styles.items_and_action}>
+        <div className={styles.items_and_subtotal}>
           {cartItems.map((cartItem) => (
             <div key={cartItem.id} className={styles.item_and_action}>
               <div
@@ -100,10 +99,21 @@ export default function Cart() {
                 </p>
               </div>
 
-              <p className={styles.action}>Remove</p>
+              <p
+                onClick={() => removeItemFromCart(cartItem.id)}
+                className={styles.action}
+              >
+                Remove
+              </p>
             </div>
           ))}
+
+          <div className={styles.subtotal}>
+            <p>Subtotal</p>
+            <p>LKR {totalCartPrice}</p>
+          </div>
         </div>
+
         <div className={styles.button}>
           <button>Go to checkout</button>
         </div>

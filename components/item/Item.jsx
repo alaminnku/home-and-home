@@ -6,13 +6,13 @@ import { useRouter } from "next/router";
 import styles from "@styles/item/Item.module.css";
 
 export default function Item({ item }) {
-  const router = useRouter();
   const { cartItems, addItemToCart } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
     name: item.name,
     quantity: 1,
-    unitPrice: item.price,
+    unitPrice: parseFloat(item.price),
+    totalPrice: parseFloat(item.price),
   });
 
   // Quantity and unit price
@@ -25,12 +25,8 @@ export default function Item({ item }) {
 
   // Update the initial item
   useEffect(() => {
-    // Restaurant slug
-    const restaurantSlug = router.query.restaurantSlug;
-
     setInitialItem((prevItem) => ({
       ...prevItem,
-      restaurantSlug,
       quantity: itemQuantityInCart || 1,
     }));
   }, [cartItems]);
@@ -40,6 +36,7 @@ export default function Item({ item }) {
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: prevItem.quantity + 1,
+      totalPrice: parseFloat(prevItem.unitPrice * (prevItem.quantity + 1)),
     }));
   }
 
@@ -48,8 +45,10 @@ export default function Item({ item }) {
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: prevItem.quantity - 1,
+      totalPrice: parseFloat(prevItem.unitPrice * (prevItem.quantity - 1)),
     }));
   }
+
   return (
     <section className={styles.item}>
       <div className={styles.item_top}>
