@@ -28,6 +28,7 @@
 }
 
 .controller {
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,6 +73,23 @@
 
 .plus svg {
   color: var(--black);
+}
+
+.remove_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove_item svg {
+  margin-right: 0.5rem;
+  color: red;
+  font-size: 0.9rem;
+}
+
+.remove_item p {
+  color: red;
+  font-size: 0.9rem;
 }
 
 .button {

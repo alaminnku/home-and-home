@@ -3,6 +3,7 @@ import styles from "@styles/layout/Cart.module.css";
 import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { createSlug } from "@utils/index";
 
 export default function Cart() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function Cart() {
   const [verticalStart, setVerticalStart] = useState(0);
   const [horizontalStart, setHorizontalStart] = useState(0);
 
+  // Disable scroll on body
   useEffect(() => {
     const body = document.querySelector("body");
 
@@ -19,7 +21,8 @@ export default function Cart() {
   });
 
   // Restaurant name
-  const restaurantName = router.query.restaurantSlug.split("-").join(" ");
+  const { restaurantSlug } = router.query;
+  const restaurantName = restaurantSlug.split("-").join(" ");
 
   // Handle touch start
   function handleTouchStart(e) {
@@ -89,7 +92,9 @@ export default function Cart() {
               >
                 <div className={styles.quantity_and_name}>
                   <p className={styles.quantity}>{cartItem.quantity}</p>
-                  <Link href="/">
+                  <Link
+                    href={`/${restaurantSlug}/${createSlug(cartItem.name)}`}
+                  >
                     <a className={styles.name}>{cartItem.name}</a>
                   </Link>
                 </div>

@@ -55,7 +55,6 @@ export function CartProvider({ children }) {
         }
       });
     }
-
     setCartItems(updatedItems);
 
     localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
@@ -72,6 +71,17 @@ export function CartProvider({ children }) {
     localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
   }
 
+  // Remove item from page
+  function removeItemFromPage(itemId) {
+    const updatedItems = cartItems.filter((cartItem) => cartItem.id !== itemId);
+
+    setCartItems(updatedItems);
+
+    localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+
+    router.push(`/${restaurantSlug}`);
+  }
+
   // Checkout cart
   function checkoutCart() {}
 
@@ -86,6 +96,7 @@ export function CartProvider({ children }) {
         totalCartQuantity,
         addItemToCart,
         removeItemFromCart,
+        removeItemFromPage,
         checkoutCart,
       }}
     >

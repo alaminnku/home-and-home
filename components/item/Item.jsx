@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { useCart } from "@contexts/CartContext";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import styles from "@styles/item/Item.module.css";
 
 export default function Item({ item }) {
-  const { cartItems, addItemToCart } = useCart();
+  const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
     name: item.name,
@@ -18,16 +18,14 @@ export default function Item({ item }) {
   // Quantity and unit price
   const { quantity, unitPrice } = initialItem;
 
-  // Get the quantity of the item from cart
-  const itemQuantityInCart = cartItems.find(
-    (cartItem) => cartItem.id === item.id
-  )?.quantity;
+  // Find this item in cart items
+  const itemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
 
   // Update the initial item
   useEffect(() => {
     setInitialItem((prevItem) => ({
       ...prevItem,
-      quantity: itemQuantityInCart || 1,
+      quantity: itemInCart?.quantity || 1,
     }));
   }, [cartItems]);
 
@@ -85,6 +83,16 @@ export default function Item({ item }) {
             <AiOutlinePlus />
           </div>
         </div>
+
+        {itemInCart && (
+          <div
+            className={styles.remove_item}
+            onClick={() => removeItemFromPage(item.id)}
+          >
+            <RiDeleteBinLine />
+            <p>Remove item</p>
+          </div>
+        )}
       </div>
 
       <div className={styles.button}>
