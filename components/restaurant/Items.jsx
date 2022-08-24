@@ -48,7 +48,9 @@ export default function Items({ restaurant }) {
 
                 {cartItems.map(
                   (cartItem) =>
-                    cartItem.id === appetizer.id && <p>{cartItem.quantity}</p>
+                    cartItem.id === appetizer.id && (
+                      <p key={appetizer.id}>{cartItem.quantity}</p>
+                    )
                 )}
               </div>
             </a>
@@ -77,7 +79,9 @@ export default function Items({ restaurant }) {
 
                 {cartItems.map(
                   (cartItem) =>
-                    cartItem.id === main.id && <p>{cartItem.quantity}</p>
+                    cartItem.id === main.id && (
+                      <p key={main.id}>{cartItem.quantity}</p>
+                    )
                 )}
               </div>
             </a>
@@ -106,7 +110,9 @@ export default function Items({ restaurant }) {
 
                 {cartItems.map(
                   (cartItem) =>
-                    cartItem.id === dumpling.id && <p>{cartItem.quantity}</p>
+                    cartItem.id === dumpling.id && (
+                      <p key={dumpling.id}>{cartItem.quantity}</p>
+                    )
                 )}
               </div>
             </a>

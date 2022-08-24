@@ -12,12 +12,17 @@ export default function Cart() {
   const [verticalStart, setVerticalStart] = useState(0);
   const [horizontalStart, setHorizontalStart] = useState(0);
 
-  // Disable scroll on body
+  // When cart is open
   useEffect(() => {
+    // Disable body scroll
     const body = document.querySelector("body");
-
     isOpen ? (body.style.overflow = "hidden") : (body.style.overflow = null);
-  });
+
+    // Remove swiped class from swiped items
+    swipedItems.forEach((swipedItem) => {
+      swipedItem.element.classList.remove(`${styles.swiped}`);
+    });
+  }, [isOpen]);
 
   // Restaurant name
   const { restaurantSlug } = router.query;
@@ -63,13 +68,28 @@ export default function Cart() {
     const target =
       e.target.localName === "p" ? e.target.parentElement : e.target;
 
-    // Add swiped class to the swiped item
+    // Swiped left
+    const swipedLeft = horizontalDifference > 60 && verticalDifference < 60;
+
+    // Swiped right
+    const swipedRight = horizontalDifference < -60;
+
+    // When swiped left, add swiped class to the swiped item
     // Remove swiped class from previously swiped items
-    if (horizontalDifference > 60 && verticalDifference < 60) {
+    if (swipedLeft) {
       swipedItems.forEach((swipedItem) => {
         if (swipedItem.id == target.id) {
           swipedItem.element.classList.add(`${styles.swiped}`);
         } else {
+          swipedItem.element.classList.remove(`${styles.swiped}`);
+        }
+      });
+    }
+
+    // When swiped right, remove swiped class from the item
+    if (swipedRight) {
+      swipedItems.forEach((swipedItem) => {
+        if (swipedItem.id == target.id) {
           swipedItem.element.classList.remove(`${styles.swiped}`);
         }
       });
