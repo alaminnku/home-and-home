@@ -32,11 +32,11 @@ export default function Checkout() {
         <div className={styles.price}>
           <div className={styles.subtotal}>
             <p>Subtotal</p>
-            <p>{totalCartPrice}</p>
+            <p>LKR {totalCartPrice}</p>
           </div>
           <div className={styles.total}>
             <p>Total</p>
-            <p>{totalCartPrice}</p>
+            <p>LKR {totalCartPrice}</p>
           </div>
         </div>
 

@@ -20,6 +20,7 @@ export default function Item({ item }) {
   const { quantity, unitPrice } = initialItem;
   const cartItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
+  // Update item in cart
   useEffect(() => {
     setItemInCart(cartItem);
   }, [initialItem]);
