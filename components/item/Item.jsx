@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "@styles/item/Item.module.css";
 
 export default function Item({ item }) {
-  const [itemInCart, setItemInCart] = useState(false);
+  const [itemInCart, setItemInCart] = useState();
   const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
@@ -18,19 +18,20 @@ export default function Item({ item }) {
 
   // Quantity and unit price
   const { quantity, unitPrice } = initialItem;
+  const cartItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+  useEffect(() => {
+    setItemInCart(cartItem);
+  }, [initialItem]);
 
   // Update quantity of initial item
   useEffect(() => {
-    // Find this item in cart
-    const cartItem = cartItems.find((cartItem) => cartItem.id === item.id);
-
-    setItemInCart(cartItem);
-
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: cartItem?.quantity || 1,
+      totalPrice: cartItem?.totalPrice || prevItem.totalPrice,
     }));
-  }, [cartItems]);
+  }, [itemInCart]);
 
   // Increase quantity
   function increaseQuantity() {

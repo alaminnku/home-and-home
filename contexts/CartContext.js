@@ -56,9 +56,7 @@ export function CartProvider({ children }) {
       });
     }
 
-    setTimeout(() => {
-      setCartItems(updatedItems);
-    }, 1000);
+    setCartItems(updatedItems);
 
     localStorage.setItem(
       `${restaurantSlug}-cart`,
