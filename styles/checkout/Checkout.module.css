@@ -47,3 +47,50 @@
   color: var(--grey);
   font-size: 0.9rem;
 }
+
+.order {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  height: 4rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border_color);
+}
+
+.order a {
+  display: inline-block;
+  text-align: center;
+  border: none;
+  font-size: 14px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--border_color);
+  background: var(--light_grey);
+  padding: 0.5rem 1.25rem;
+}
+
+.order a.active {
+  background: green;
+}
+
+@media (min-width: 375px) {
+  .order {
+    height: 4.5rem;
+  }
+
+  .order a {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 414px) {
+  .order {
+    height: 5rem;
+  }
+
+  .order a {
+    padding: 0.75rem 1.5rem;
+  }
+}

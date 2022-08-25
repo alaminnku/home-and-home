@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
 import Swipe from "./Swipeable";
-import Button from "./Button";
+import Link from "next/link";
 import styles from "@styles/layout/Cart.module.css";
 
 export default function Cart() {
@@ -35,12 +35,11 @@ export default function Cart() {
           <p>LKR {totalCartPrice}</p>
         </div>
 
-        <Button
-          closeCart={closeCart}
-          text="Go to checkout"
-          background="black"
-          url={`${restaurantSlug}/checkout`}
-        />
+        <div className={styles.checkout}>
+          <Link href={`${restaurantSlug}/checkout`}>
+            <a>Go to checkout</a>
+          </Link>
+        </div>
       </div>
 
       <div

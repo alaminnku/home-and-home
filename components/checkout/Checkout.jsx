@@ -2,7 +2,6 @@ import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Swipe from "@components/layout/Swipeable";
-import Button from "@components/layout/Button";
 import styles from "@styles/checkout/Checkout.module.css";
 
 export default function Checkout() {
@@ -46,12 +45,13 @@ export default function Checkout() {
         </p>
       </div>
 
-      <Button
-        disabled={cartItems.length === 0}
-        url="/"
-        background="green"
-        text={`Place order - LKR ${totalCartPrice}`}
-      />
+      <div className={styles.order}>
+        <Link href={`${restaurantSlug}/checkout`}>
+          <a
+            className={cartItems.length > 0 ? styles.active : null}
+          >{`Place order - LKR ${totalCartPrice}`}</a>
+        </Link>
+      </div>
     </section>
   );
 }
