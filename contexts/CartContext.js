@@ -16,7 +16,9 @@ export function CartProvider({ children }) {
   // Get cart items from local storage on app reload
   useEffect(() => {
     // Update cart items
-    setCartItems(JSON.parse(localStorage.getItem(`${restaurantSlug}`)) || []);
+    setCartItems(
+      JSON.parse(localStorage.getItem(`${restaurantSlug}-cart`)) || []
+    );
   }, []);
 
   // Cart open and close functions
@@ -57,7 +59,10 @@ export function CartProvider({ children }) {
 
     setCartItems(updatedItems);
 
-    localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+    localStorage.setItem(
+      `${restaurantSlug}-cart`,
+      JSON.stringify(updatedItems)
+    );
 
     router.push(`/${restaurantSlug}`);
   }
@@ -68,7 +73,10 @@ export function CartProvider({ children }) {
 
     setCartItems(updatedItems);
 
-    localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+    localStorage.setItem(
+      `${restaurantSlug}-cart`,
+      JSON.stringify(updatedItems)
+    );
 
     cartItems.length === 1 && closeCart();
   }
@@ -79,11 +87,12 @@ export function CartProvider({ children }) {
 
     setCartItems(updatedItems);
 
-    localStorage.setItem(`${restaurantSlug}`, JSON.stringify(updatedItems));
+    localStorage.setItem(
+      `${restaurantSlug}-cart`,
+      JSON.stringify(updatedItems)
+    );
 
     router.push(`/${restaurantSlug}`);
-
-    console.log(cartItems.length);
 
     cartItems.length > 1 && openCart();
   }
@@ -107,7 +116,6 @@ export function CartProvider({ children }) {
       }}
     >
       {children}
-      {/* <Cart /> */}
     </CartContext.Provider>
   );
 }

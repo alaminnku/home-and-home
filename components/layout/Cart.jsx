@@ -12,6 +12,10 @@ export default function Cart() {
   const [verticalStart, setVerticalStart] = useState(0);
   const [horizontalStart, setHorizontalStart] = useState(0);
 
+  // Restaurant name
+  const { restaurantSlug } = router.query;
+  const restaurantName = restaurantSlug.split("-").join(" ");
+
   // When cart is open
   useEffect(() => {
     // Disable body scroll
@@ -23,10 +27,6 @@ export default function Cart() {
       swipedItem.element.classList.remove(`${styles.swiped}`);
     });
   }, [isOpen]);
-
-  // Restaurant name
-  const { restaurantSlug } = router.query;
-  const restaurantName = restaurantSlug.split("-").join(" ");
 
   // Handle touch start
   function handleTouchStart(e) {
@@ -64,19 +64,26 @@ export default function Cart() {
     const verticalDifference = Math.abs(verticalStart - verticalEnd);
     const horizontalDifference = horizontalStart - horizontalEnd;
 
-    // Get the target
+    // Target and swipe threshold
+    const threshold = 50;
     const target =
-      e.target.localName === "p" ? e.target.parentElement : e.target;
+      e.target.localName === "p"
+        ? e.target.parentElement.parentElement
+        : e.target;
+
+    console.log(target);
 
     // Swiped left
-    const swipedLeft = horizontalDifference > 60 && verticalDifference < 60;
+    const leftSwipe =
+      horizontalDifference > threshold && verticalDifference < threshold;
 
     // Swiped right
-    const swipedRight = horizontalDifference < -60;
+    const rightSwipe =
+      horizontalDifference < -threshold && verticalDifference < threshold;
 
     // When swiped left, add swiped class to the swiped item
     // Remove swiped class from previously swiped items
-    if (swipedLeft) {
+    if (leftSwipe) {
       swipedItems.forEach((swipedItem) => {
         if (swipedItem.id == target.id) {
           swipedItem.element.classList.add(`${styles.swiped}`);
@@ -87,7 +94,7 @@ export default function Cart() {
     }
 
     // When swiped right, remove swiped class from the item
-    if (swipedRight) {
+    if (rightSwipe) {
       swipedItems.forEach((swipedItem) => {
         if (swipedItem.id == target.id) {
           swipedItem.element.classList.remove(`${styles.swiped}`);
@@ -98,8 +105,8 @@ export default function Cart() {
 
   // Push to the item page
   function pushToTheItemPage(name) {
-    router.push(`/${restaurantSlug}/${createSlug(name)}`);
     closeCart();
+    router.push(`/${restaurantSlug}/${createSlug(name)}`);
   }
 
   return (
