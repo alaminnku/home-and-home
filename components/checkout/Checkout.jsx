@@ -46,7 +46,7 @@ export default function Checkout() {
       </div>
 
       <div className={styles.order}>
-        <Link href={`${restaurantSlug}/checkout`}>
+        <Link href="/">
           <a
             className={cartItems.length > 0 ? styles.active : null}
           >{`Place order - LKR ${totalCartPrice}`}</a>

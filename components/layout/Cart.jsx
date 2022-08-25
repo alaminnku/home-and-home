@@ -19,6 +19,11 @@ export default function Cart() {
     isOpen ? (body.style.overflow = "hidden") : (body.style.overflow = null);
   }, [isOpen]);
 
+  function pushToTheCheckoutPage() {
+    closeCart();
+    router.push(`${restaurantSlug}/checkout`);
+  }
+
   return (
     <div>
       <div
@@ -36,9 +41,7 @@ export default function Cart() {
         </div>
 
         <div className={styles.checkout}>
-          <Link href={`${restaurantSlug}/checkout`}>
-            <a>Go to checkout</a>
-          </Link>
+          <button onClick={pushToTheCheckoutPage}>Go to checkout</button>
         </div>
       </div>
 
