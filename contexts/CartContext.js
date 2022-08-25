@@ -10,16 +10,15 @@ export function CartProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
-  // Restaurant slug
-  const restaurantSlug = router.query.restaurantSlug;
+  // // Restaurant slug
+  const { restaurantSlug } = router.query;
 
   // Get cart items from local storage on app reload
   useEffect(() => {
-    // Update cart items
     setCartItems(
       JSON.parse(localStorage.getItem(`${restaurantSlug}-cart`)) || []
     );
-  }, []);
+  }, [restaurantSlug]);
 
   // Cart open and close functions
   const openCart = () => setIsOpen(true);
@@ -57,7 +56,9 @@ export function CartProvider({ children }) {
       });
     }
 
-    setCartItems(updatedItems);
+    setTimeout(() => {
+      setCartItems(updatedItems);
+    }, 500);
 
     localStorage.setItem(
       `${restaurantSlug}-cart`,

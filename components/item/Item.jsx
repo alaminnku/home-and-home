@@ -4,10 +4,9 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { useCart } from "@contexts/CartContext";
 import { useEffect, useState } from "react";
 import styles from "@styles/item/Item.module.css";
-import { useRouter } from "next/router";
 
 export default function Item({ item }) {
-  const [itemInCart, setItemInCart] = useState();
+  const [itemInCart, setItemInCart] = useState(false);
   const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
@@ -21,19 +20,17 @@ export default function Item({ item }) {
   const { quantity, unitPrice } = initialItem;
 
   // Update quantity of initial item
-  // and check if the item is in cart
   useEffect(() => {
     // Find this item in cart
     const cartItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
-    // Update states
     setItemInCart(cartItem);
 
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: cartItem?.quantity || 1,
     }));
-  }, []);
+  }, [cartItems]);
 
   // Increase quantity
   function increaseQuantity() {

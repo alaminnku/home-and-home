@@ -1,0 +1,49 @@
+.checkout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.checkout_top h1,
+.items_top,
+.add_items,
+.price,
+.info {
+  padding: 0.55rem 0.75rem;
+}
+
+.items_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.items_top a,
+.add_items a {
+  color: green;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.subtotal,
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subtotal {
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.total p {
+  font-weight: 600;
+}
+
+.info {
+  font-weight: 300;
+  color: var(--grey);
+  font-size: 0.9rem;
+}

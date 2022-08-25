@@ -1,0 +1,66 @@
+.items {
+  padding: 0rem 0.75rem;
+}
+
+.items p,
+.items a {
+  font-size: 0.9rem;
+}
+
+.item_and_action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  border-bottom: 1px solid var(--border_color);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  --item_width: 100%;
+  width: var(--item_width);
+  padding: 0.75rem 0rem;
+  transition: width 0.5s ease;
+}
+
+.quantity_and_name {
+  display: flex;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--border_color);
+}
+
+.name {
+  color: var(--black);
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -5rem;
+  height: 100%;
+  width: 5rem;
+  color: var(--white);
+  background-color: red;
+  transition: right 0.5s ease;
+}
+
+.item.swiped {
+  width: calc(var(--item_width) - 5.5rem);
+}
+
+.item.swiped + .action {
+  right: 0;
+}
