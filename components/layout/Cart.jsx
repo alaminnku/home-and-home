@@ -71,8 +71,6 @@ export default function Cart() {
         ? e.target.parentElement.parentElement
         : e.target;
 
-    console.log(target);
-
     // Swiped left
     const leftSwipe =
       horizontalDifference > threshold && verticalDifference < threshold;
