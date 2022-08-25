@@ -65,6 +65,7 @@
   font-size: 14px;
   width: 100%;
   cursor: pointer;
+  pointer-events: none;
   font-weight: 600;
   color: var(--border_color);
   background: var(--light_grey);
@@ -73,6 +74,7 @@
 
 .order a.active {
   background: green;
+  pointer-events: all;
 }
 
 @media (min-width: 375px) {
