@@ -18,7 +18,7 @@ export function CartProvider({ children }) {
     setCartItems(
       JSON.parse(localStorage.getItem(`${restaurantSlug}-cart`)) || []
     );
-  }, [restaurantSlug]);
+  }, [router.isReady]);
 
   // Cart open and close functions
   const openCart = () => setIsOpen(true);

@@ -18,19 +18,18 @@ export default function Item({ item }) {
 
   // Quantity and unit price
   const { quantity, unitPrice } = initialItem;
-  const cartItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
   // Update item in cart
   useEffect(() => {
-    setItemInCart(cartItem);
+    setItemInCart(cartItems.find((cartItem) => cartItem.id === item.id));
   }, [initialItem]);
 
   // Update quantity of initial item
   useEffect(() => {
     setInitialItem((prevItem) => ({
       ...prevItem,
-      quantity: cartItem?.quantity || 1,
-      totalPrice: cartItem?.totalPrice || prevItem.totalPrice,
+      quantity: itemInCart?.quantity || 1,
+      totalPrice: itemInCart?.totalPrice || prevItem.totalPrice,
     }));
   }, [itemInCart]);
 

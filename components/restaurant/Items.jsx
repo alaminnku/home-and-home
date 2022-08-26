@@ -6,7 +6,8 @@ import styles from "@styles/restaurant/Items.module.css";
 import { useCart } from "@contexts/CartContext";
 
 export default function Items({ restaurant }) {
-  const slug = useRouter().asPath;
+  const router = useRouter();
+  const { restaurantSlug } = router.query;
   const { isOpen, openCart, cartItems, totalCartQuantity } = useCart();
 
   // All appetizers
@@ -28,7 +29,7 @@ export default function Items({ restaurant }) {
         <h2>Appetizers</h2>
         {appetizers.map((appetizer) => (
           <Link
-            href={`${slug}/${createSlug(appetizer.name)}`}
+            href={`${restaurantSlug}/${createSlug(appetizer.name)}`}
             key={appetizer.id}
           >
             <a className={styles.product}>
@@ -63,7 +64,10 @@ export default function Items({ restaurant }) {
       <div className={styles.item}>
         <h2>Mains</h2>
         {mains.map((main) => (
-          <Link href={`${slug}/${createSlug(main.name)}`} key={main.id}>
+          <Link
+            href={`${restaurantSlug}/${createSlug(main.name)}`}
+            key={main.id}
+          >
             <a className={styles.product}>
               <div className={styles.header}>
                 <p className={styles.title}>{main.name}</p>
@@ -96,7 +100,10 @@ export default function Items({ restaurant }) {
       <div className={styles.item}>
         <h2>Dumplings</h2>
         {dumplings.map((dumpling) => (
-          <Link href={`${slug}/${createSlug(dumpling.name)}`} key={dumpling.id}>
+          <Link
+            href={`${restaurantSlug}/${createSlug(dumpling.name)}`}
+            key={dumpling.id}
+          >
             <a className={styles.product}>
               <div className={styles.header}>
                 <p className={styles.title}>{dumpling.name}</p>
