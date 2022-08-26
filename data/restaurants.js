@@ -241,46 +241,6 @@ export default [
         image:
           "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/275322595_292366092983677_5848475559273878940_n.webp?stp=dst-jpg_e35&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=101&_nc_ohc=qdyqTCsygBEAX-IdEpZ&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=Mjc4OTg1NDMzMjY4MjY0NzQ4Ng%3D%3D.2-ccb7-5&oh=00_AT8GDCGWBseLcTuE3gU-qFNfOqQvH8-EHE1BzqSLnFHO8A&oe=6305C4FD&_nc_sid=6136e7",
       },
-      {
-        id: "143267464",
-        price: "2500",
-        name: "Egg tarts - 2",
-        type: "dumplings",
-        description:
-          "Hong-Kong style egg tarts, or dan tat in Cantonese, are probably my favorite pastry. Period",
-        image:
-          "https://scontent-tpe1-1.cdninstagram.com/v/t51.2885-15/295780570_723157132320809_6683203176073938036_n.webp?stp=dst-jpg_e35&_nc_ht=scontent-tpe1-1.cdninstagram.com&_nc_cat=105&_nc_ohc=12jfWMNaOrwAX9TBBqQ&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=Mjg5MTU3NjQzODA1NDQ5MjIzNg%3D%3D.2-ccb7-5&oh=00_AT_CqAvk-YYg1lF1F_AXXPS-_BIzPtA82cqUu4lo_m89LA&oe=6306A135&_nc_sid=6136e7",
-      },
-      {
-        id: "190065517",
-        price: "1800",
-        name: "Ice cream mochi - 2",
-        type: "dumplings",
-        description:
-          "Homemade Mochi Ice Cream are Japanese rice cakes with an ice cream center in a soft, slightly chewy, sweet rice dough",
-        image:
-          "https://scontent-tpe1-1.cdninstagram.com/v/t51.2885-15/289052959_615642089949610_1234802592140263816_n.webp?stp=dst-jpg_e35&_nc_ht=scontent-tpe1-1.cdninstagram.com&_nc_cat=110&_nc_ohc=d3ltp1qLQigAX_sa-4V&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=Mjg2NTE5MDc5NTcxODUzMDY2Mw%3D%3D.2-ccb7-5&oh=00_AT9cbuYQLIyEBI6CaoKNlBvj2ilslf5bYswWRD4SIoI24w&oe=63063046&_nc_sid=6136e7",
-      },
-      {
-        id: "96252660",
-        price: "1500",
-        name: "Moon Cakes - 2",
-        type: "dumplings",
-        description:
-          "A mooncake is a Chinese bakery product traditionally eaten during the Mid-Autumn Festival (中秋節). The festival is about lunar appreciation and the Moon.",
-        image:
-          "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/279743707_3785296205030383_1623750674422648673_n.webp?stp=dst-jpg_e35&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=107&_nc_ohc=5_3NFDtLNzkAX-5iUxj&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MjgyOTI4NDMzMTgyNTM2MzQzMg%3D%3D.2-ccb7-5&oh=00_AT_rFgFi0GwYX8KV5ufiKkD0NnKT6NluEhVCePXvHeEQ-Q&oe=63059DD2&_nc_sid=6136e7",
-      },
-      {
-        id: "164187141",
-        price: "3200",
-        name: "Sui mai - 2",
-        type: "dumplings",
-        description:
-          "Shumai or siu mai are steamed pork and shrimp dumplings. It's kind of like a juicy pork meatball, held together by a soft and chewy dumpling wrapper.",
-        image:
-          "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/275720721_510644357386682_4512052454940531730_n.webp?stp=dst-jpg_e35&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=102&_nc_ohc=P84Ukq7RXOsAX_tBjjt&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=Mjc5MTI5ODE1MDk5Mjc0NDUzMw%3D%3D.2-ccb7-5&oh=00_AT9efR4W0vhWgjr_InrKAetNeOP9BjLe_1rNNxWgr_FJ5g&oe=630547D5&_nc_sid=6136e7",
-      },
     ],
   },
 ];

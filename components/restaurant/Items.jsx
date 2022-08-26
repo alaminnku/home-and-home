@@ -23,118 +23,137 @@ export default function Items({ restaurant }) {
     (item) => item.type === "dumplings"
   );
 
+  // Check if category exists
+  const categoryExist = (category) => category.length > 0;
+
   return (
     <section className={styles.items}>
       <div className={styles.item}>
-        <h2>Appetizers</h2>
-        {appetizers.map((appetizer) => (
-          <Link
-            href={`${restaurantSlug}/${createSlug(appetizer.name)}`}
-            key={appetizer.id}
-          >
-            <a className={styles.product}>
-              <div className={styles.header}>
-                <p className={styles.title}>{appetizer.name}</p>
-                <p className={styles.price}>
-                  LKR {convertNumber(appetizer.price)}
-                </p>
-                <p className={styles.description}>{appetizer.description}</p>
-              </div>
-              <div className={styles.image}>
-                <Image
-                  src={appetizer.image}
-                  width={1}
-                  height={1}
-                  layout="responsive"
-                  objectFit="cover"
-                />
+        {categoryExist(appetizers) && (
+          <>
+            <h2>Appetizers</h2>
+            {appetizers.map((appetizer) => (
+              <Link
+                href={`${restaurantSlug}/${createSlug(appetizer.name)}`}
+                key={appetizer.id}
+              >
+                <a className={styles.product}>
+                  <div className={styles.header}>
+                    <p className={styles.title}>{appetizer.name}</p>
+                    <p className={styles.price}>
+                      LKR {convertNumber(appetizer.price)}
+                    </p>
+                    <p className={styles.description}>
+                      {appetizer.description}
+                    </p>
+                  </div>
+                  <div className={styles.image}>
+                    <Image
+                      src={appetizer.image}
+                      width={1}
+                      height={1}
+                      layout="responsive"
+                      objectFit="cover"
+                    />
 
-                {cartItems.map(
-                  (cartItem) =>
-                    cartItem.id === appetizer.id && (
-                      <p key={appetizer.id} className={styles.quantity}>
-                        {cartItem.quantity}
-                      </p>
-                    )
-                )}
-              </div>
-            </a>
-          </Link>
-        ))}
+                    {cartItems.map(
+                      (cartItem) =>
+                        cartItem.id === appetizer.id && (
+                          <p key={appetizer.id} className={styles.quantity}>
+                            {cartItem.quantity}
+                          </p>
+                        )
+                    )}
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
 
       <div className={styles.item}>
-        <h2>Mains</h2>
-        {mains.map((main) => (
-          <Link
-            href={`${restaurantSlug}/${createSlug(main.name)}`}
-            key={main.id}
-          >
-            <a className={styles.product}>
-              <div className={styles.header}>
-                <p className={styles.title}>{main.name}</p>
-                <p className={styles.price}>LKR {convertNumber(main.price)}</p>
-                <p className={styles.description}>{main.description}</p>
-              </div>
-              <div className={styles.image}>
-                <Image
-                  src={main.image}
-                  width={1}
-                  height={1}
-                  layout="responsive"
-                  objectFit="cover"
-                />
+        {categoryExist(mains) && (
+          <>
+            <h2>Mains</h2>
+            {mains.map((main) => (
+              <Link
+                href={`${restaurantSlug}/${createSlug(main.name)}`}
+                key={main.id}
+              >
+                <a className={styles.product}>
+                  <div className={styles.header}>
+                    <p className={styles.title}>{main.name}</p>
+                    <p className={styles.price}>
+                      LKR {convertNumber(main.price)}
+                    </p>
+                    <p className={styles.description}>{main.description}</p>
+                  </div>
+                  <div className={styles.image}>
+                    <Image
+                      src={main.image}
+                      width={1}
+                      height={1}
+                      layout="responsive"
+                      objectFit="cover"
+                    />
 
-                {cartItems.map(
-                  (cartItem) =>
-                    cartItem.id === main.id && (
-                      <p key={main.id} className={styles.quantity}>
-                        {cartItem.quantity}
-                      </p>
-                    )
-                )}
-              </div>
-            </a>
-          </Link>
-        ))}
+                    {cartItems.map(
+                      (cartItem) =>
+                        cartItem.id === main.id && (
+                          <p key={main.id} className={styles.quantity}>
+                            {cartItem.quantity}
+                          </p>
+                        )
+                    )}
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
 
       <div className={styles.item}>
-        <h2>Dumplings</h2>
-        {dumplings.map((dumpling) => (
-          <Link
-            href={`${restaurantSlug}/${createSlug(dumpling.name)}`}
-            key={dumpling.id}
-          >
-            <a className={styles.product}>
-              <div className={styles.header}>
-                <p className={styles.title}>{dumpling.name}</p>
-                <p className={styles.price}>
-                  LKR {convertNumber(dumpling.price)}
-                </p>
-                <p className={styles.description}>{dumpling.description}</p>
-              </div>
-              <div className={styles.image}>
-                <Image
-                  src={dumpling.image}
-                  width={1}
-                  height={1}
-                  layout="responsive"
-                  objectFit="cover"
-                />
+        {categoryExist(dumplings) && (
+          <>
+            <h2>Dumplings</h2>
+            {dumplings.map((dumpling) => (
+              <Link
+                href={`${restaurantSlug}/${createSlug(dumpling.name)}`}
+                key={dumpling.id}
+              >
+                <a className={styles.product}>
+                  <div className={styles.header}>
+                    <p className={styles.title}>{dumpling.name}</p>
+                    <p className={styles.price}>
+                      LKR {convertNumber(dumpling.price)}
+                    </p>
+                    <p className={styles.description}>{dumpling.description}</p>
+                  </div>
+                  <div className={styles.image}>
+                    <Image
+                      src={dumpling.image}
+                      width={1}
+                      height={1}
+                      layout="responsive"
+                      objectFit="cover"
+                    />
 
-                {cartItems.map(
-                  (cartItem) =>
-                    cartItem.id === dumpling.id && (
-                      <p key={dumpling.id} className={styles.quantity}>
-                        {cartItem.quantity}
-                      </p>
-                    )
-                )}
-              </div>
-            </a>
-          </Link>
-        ))}
+                    {cartItems.map(
+                      (cartItem) =>
+                        cartItem.id === dumpling.id && (
+                          <p key={dumpling.id} className={styles.quantity}>
+                            {cartItem.quantity}
+                          </p>
+                        )
+                    )}
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
 
       {cartItems.length > 0 && !isOpen && (
