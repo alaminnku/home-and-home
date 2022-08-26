@@ -4,6 +4,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { useCart } from "@contexts/CartContext";
 import { useEffect, useState } from "react";
 import styles from "@styles/item/Item.module.css";
+import { convertNumber } from "@utils/index";
 
 export default function Item({ item }) {
   const [itemInCart, setItemInCart] = useState();
@@ -15,6 +16,8 @@ export default function Item({ item }) {
     unitPrice: parseFloat(item.price),
     totalPrice: parseFloat(item.price),
   });
+
+  console.log(convertNumber(item.price));
 
   // Quantity and unit price
   const { quantity, unitPrice } = initialItem;
@@ -67,7 +70,6 @@ export default function Item({ item }) {
         <div className={styles.header}>
           <h1 className={styles.title}>{item.name}</h1>
           <p className={styles.description}>{item.description}</p>
-          <p className={styles.price}>LKR {item.price}</p>
         </div>
 
         <div className={styles.controller}>
@@ -101,7 +103,7 @@ export default function Item({ item }) {
 
       <div className={styles.button}>
         <button onClick={() => addItemToCart(initialItem)}>
-          Add {quantity} to basket - {quantity * unitPrice} LKR
+          Add {quantity} to basket - {convertNumber(quantity * unitPrice)} LKR
         </button>
       </div>
     </section>

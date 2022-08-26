@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { createSlug } from "@utils/index";
+import { convertNumber, createSlug } from "@utils/index";
 import { useCart } from "@contexts/CartContext";
 import styles from "@styles/layout/Swipeable.module.css";
 
@@ -120,7 +120,9 @@ export default function Swipeable({ items }) {
               </p>
             </div>
 
-            <p className={styles.price}>LKR {item.unitPrice * item.quantity}</p>
+            <p className={styles.price}>
+              LKR {convertNumber(item.unitPrice * item.quantity)}
+            </p>
           </div>
 
           <p

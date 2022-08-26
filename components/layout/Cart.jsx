@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
-import Swipe from "./Swipeable";
-import Link from "next/link";
+import Swipeable from "./Swipeable";
+import { convertNumber } from "@utils/index";
 import styles from "@styles/layout/Cart.module.css";
 
 export default function Cart() {
@@ -33,11 +33,11 @@ export default function Cart() {
       >
         <p className={styles.restaurant_name}>{restaurantName}</p>
 
-        <Swipe items={cartItems} />
+        <Swipeable items={cartItems} />
 
         <div className={styles.subtotal}>
           <p>Subtotal</p>
-          <p>LKR {totalCartPrice}</p>
+          <p>LKR {convertNumber(totalCartPrice)}</p>
         </div>
 
         <div className={styles.checkout}>

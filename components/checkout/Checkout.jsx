@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Swipe from "@components/layout/Swipeable";
 import styles from "@styles/checkout/Checkout.module.css";
+import { convertNumber } from "@utils/index";
 
 export default function Checkout() {
   const router = useRouter();
@@ -31,11 +32,11 @@ export default function Checkout() {
         <div className={styles.price}>
           <div className={styles.subtotal}>
             <p>Subtotal</p>
-            <p>LKR {totalCartPrice}</p>
+            <p>LKR {convertNumber(totalCartPrice)}</p>
           </div>
           <div className={styles.total}>
             <p>Total</p>
-            <p>LKR {totalCartPrice}</p>
+            <p>LKR {convertNumber(totalCartPrice)}</p>
           </div>
         </div>
 

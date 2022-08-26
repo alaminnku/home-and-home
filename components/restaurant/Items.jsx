@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { createSlug } from "@utils/index";
+import { convertNumber, createSlug } from "@utils/index";
 import styles from "@styles/restaurant/Items.module.css";
 import { useCart } from "@contexts/CartContext";
 
@@ -36,7 +36,9 @@ export default function Items({ restaurant }) {
               <div className={styles.header}>
                 <p className={styles.title}>{appetizer.name}</p>
                 <p className={styles.description}>{appetizer.description}</p>
-                <p className={styles.price}>LKR {appetizer.price}</p>
+                <p className={styles.price}>
+                  LKR {convertNumber(appetizer.price)}
+                </p>
               </div>
               <div className={styles.image}>
                 <Image
@@ -72,7 +74,7 @@ export default function Items({ restaurant }) {
               <div className={styles.header}>
                 <p className={styles.title}>{main.name}</p>
                 <p className={styles.description}>{main.description}</p>
-                <p className={styles.price}>LKR {main.price}</p>
+                <p className={styles.price}>LKR {convertNumber(main.price)}</p>
               </div>
               <div className={styles.image}>
                 <Image
@@ -108,7 +110,9 @@ export default function Items({ restaurant }) {
               <div className={styles.header}>
                 <p className={styles.title}>{dumpling.name}</p>
                 <p className={styles.description}>{dumpling.description}</p>
-                <p className={styles.price}>LKR {dumpling.price}</p>
+                <p className={styles.price}>
+                  LKR {convertNumber(dumpling.price)}
+                </p>
               </div>
               <div className={styles.image}>
                 <Image
