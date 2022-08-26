@@ -154,7 +154,7 @@ export default [
       {
         id: "600821403",
         price: "800",
-        name: "Crab Rangoon",
+        name: "Crab Rangoon - 2",
         type: "appetizers",
         description:
           "Everyone has being asking for bottels of our crab Rangoon!\n\nWe have decided to make 250g bottels!\n\nAvailable every Tuesday\nOrders to be made by Monday!\n\n1800-250g!",
@@ -164,7 +164,7 @@ export default [
       {
         id: "197093179",
         price: "1200",
-        name: "Chicken yakitori",
+        name: "Chicken yakitori - 2",
         type: "appetizers",
         description:
           "Chicken yakitori is an easy Japanese grilled recipe served on skewers. The meat is basted with a savory-sweet sauce as it cooks over a hot flame,",
@@ -174,7 +174,7 @@ export default [
       {
         id: "572585827",
         price: "700",
-        name: "Scallion buns",
+        name: "Scallion buns - 2",
         type: "appetizers",
         description:
           "These scallion buns, with their fluffy, layered texture and intriguing shape, make a delicious snack straight out of the steamer. Packed with fragrant greens",
@@ -184,7 +184,7 @@ export default [
       {
         id: "791034001",
         price: "2500",
-        name: "Orange chicken",
+        name: "Orange chicken - 2",
         type: "mains",
         description:
           "This Chinese Orange Chicken is made with boneless skinless chicken breast, cut into bite-size pieces, dredged, and then fried until golden and delicious",
@@ -194,7 +194,7 @@ export default [
       {
         id: "327962578",
         price: "3100",
-        name: "Chicken Katsu curry",
+        name: "Chicken Katsu curry - 2",
         type: "mains",
         description:
           "Katsu curry is a Japanese dish consisting of a pork cutlet (tonkatsu) served with a portion of Japanese rice and curry. It is served on a large plate and is typically eaten using a spoon or fork.",
@@ -204,7 +204,7 @@ export default [
       {
         id: "735711250",
         price: "4500",
-        name: "Sichuan Prawn stir fry",
+        name: "Sichuan Prawn stir fry - 2",
         type: "mains",
         description:
           "Sichuan-style Chinese cuisine is famous for its peppery heat — this seafood stir-fry is fresh and aromatic but still mild enough for kids",
@@ -214,7 +214,7 @@ export default [
       {
         id: "589015777",
         price: "2800",
-        name: "Chinese Beef Stew",
+        name: "Chinese Beef Stew - 2",
         type: "mains",
         description:
           "Chinese beef stew with potatoes is a hearty, comforting dish. Beef chunks are slowly braised with a variety of spices and soy sauce until very tender. Then potatoes and carrots are added to make it more substantial and nutritionally balanced",
@@ -224,7 +224,7 @@ export default [
       {
         id: "776332559",
         price: "1400",
-        name: "Congee",
+        name: "Congee - 2",
         type: "mains",
         description:
           "This simple congee rice porridge recipe is made from chicken stock, rice and fresh ginger",
@@ -234,7 +234,7 @@ export default [
       {
         id: "456950956",
         price: "2600",
-        name: "Mapo Tofu",
+        name: "Mapo Tofu - 2",
         type: "mains",
         description:
           "Mapo tofu is a popular Chinese dish from Sichuan province. It consists of tofu set in a spicy sauce, typically a thin, oily, and bright red suspension, based on douban, and douchi, along with minced meat, traditionally beef.",
@@ -244,7 +244,7 @@ export default [
       {
         id: "143267464",
         price: "2500",
-        name: "Egg tarts",
+        name: "Egg tarts - 2",
         type: "dumplings",
         description:
           "Hong-Kong style egg tarts, or dan tat in Cantonese, are probably my favorite pastry. Period",
@@ -254,7 +254,7 @@ export default [
       {
         id: "190065517",
         price: "1800",
-        name: "Ice cream mochi",
+        name: "Ice cream mochi - 2",
         type: "dumplings",
         description:
           "Homemade Mochi Ice Cream are Japanese rice cakes with an ice cream center in a soft, slightly chewy, sweet rice dough",
@@ -264,7 +264,7 @@ export default [
       {
         id: "96252660",
         price: "1500",
-        name: "Moon Cakes",
+        name: "Moon Cakes - 2",
         type: "dumplings",
         description:
           "A mooncake is a Chinese bakery product traditionally eaten during the Mid-Autumn Festival (中秋節). The festival is about lunar appreciation and the Moon.",
@@ -274,7 +274,7 @@ export default [
       {
         id: "164187141",
         price: "3200",
-        name: "Sui mai",
+        name: "Sui mai - 2",
         type: "dumplings",
         description:
           "Shumai or siu mai are steamed pork and shrimp dumplings. It's kind of like a juicy pork meatball, held together by a soft and chewy dumpling wrapper.",
