@@ -3,6 +3,7 @@ import styles from "@styles/restaurant/Hero.module.css";
 
 export default function Hero({ restaurant }) {
   const { name, address, banner } = restaurant;
+
   return (
     <section>
       <div className={styles.banner}>

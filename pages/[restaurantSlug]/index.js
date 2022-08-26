@@ -1,9 +1,8 @@
-import restaurants from "@data/restaurants";
+import { data } from "@data/restaurants.json";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import { createSlug } from "@utils/index";
 import Cart from "@components/layout/Cart";
-import { useCart } from "@contexts/CartContext";
 
 export default function RestaurantPage({ restaurant }) {
   return (
@@ -17,7 +16,7 @@ export default function RestaurantPage({ restaurant }) {
 
 export async function getStaticPaths() {
   // Restaurant name slugs
-  const slugs = restaurants.map((restaurant) => {
+  const slugs = data.map((restaurant) => {
     return {
       params: {
         restaurantSlug: createSlug(restaurant.name),
@@ -36,7 +35,7 @@ export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
   // Find the restaurant with slug
-  const restaurant = restaurants.find(
+  const restaurant = data.find(
     (restaurant) => createSlug(restaurant.name) === restaurantSlug
   );
 

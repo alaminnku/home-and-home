@@ -17,8 +17,6 @@ export default function Item({ item }) {
     totalPrice: parseFloat(item.price),
   });
 
-  console.log(convertNumber(item.price));
-
   // Quantity and unit price
   const { quantity, unitPrice } = initialItem;
 
