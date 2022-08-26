@@ -35,10 +35,10 @@ export default function Items({ restaurant }) {
             <a className={styles.product}>
               <div className={styles.header}>
                 <p className={styles.title}>{appetizer.name}</p>
-                <p className={styles.description}>{appetizer.description}</p>
                 <p className={styles.price}>
                   LKR {convertNumber(appetizer.price)}
                 </p>
+                <p className={styles.description}>{appetizer.description}</p>
               </div>
               <div className={styles.image}>
                 <Image

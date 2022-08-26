@@ -16,13 +16,14 @@
 }
 
 .title {
-  font-size: 24px;
   margin-bottom: 0.5rem;
+  font-size: var(--large_font);
 }
 
 .description {
   color: var(--grey);
   margin-bottom: 0.5rem;
+  font-size: var(--small_font);
 }
 
 .price {
@@ -50,7 +51,7 @@
 }
 
 .icon svg {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--light_grey);
 }
 
@@ -84,7 +85,7 @@
   justify-content: center;
   align-self: center;
   border-radius: 2rem;
-  background: var(--border_color);
+  background: var(--button_background);
 }
 
 .remove_item svg {
@@ -94,7 +95,6 @@
 }
 
 .remove_item p {
-  color: red;
   font-size: 0.9rem;
 }
 
@@ -109,7 +109,7 @@
 
 .button button {
   border: none;
-  font-size: 14px;
+  font-size: var(--button_font);
   width: 100%;
   cursor: pointer;
   font-weight: 600;
@@ -129,10 +129,6 @@
 
   .button {
     height: 4.5rem;
-  }
-
-  .button button {
-    font-size: 16px;
   }
 }
 

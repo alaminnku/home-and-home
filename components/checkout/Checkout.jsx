@@ -1,9 +1,10 @@
 import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Swipe from "@components/layout/Swipeable";
-import styles from "@styles/checkout/Checkout.module.css";
+import { HiPlus } from "react-icons/hi";
+import Swipeable from "@components/layout/Swipeable";
 import { convertNumber } from "@utils/index";
+import styles from "@styles/checkout/Checkout.module.css";
 
 export default function Checkout() {
   const router = useRouter();
@@ -21,11 +22,13 @@ export default function Checkout() {
           </Link>
         </div>
 
-        <Swipe items={cartItems} />
+        <Swipeable items={cartItems} />
 
         <div className={styles.add_items}>
           <Link href={`/${restaurantSlug}`}>
-            <a>Add items</a>
+            <a>
+              <HiPlus /> Add items
+            </a>
           </Link>
         </div>
 
@@ -50,7 +53,7 @@ export default function Checkout() {
         <Link href="/">
           <a
             className={cartItems.length > 0 ? styles.active : null}
-          >{`Place order - LKR ${totalCartPrice}`}</a>
+          >{`Place order • LKR ${convertNumber(totalCartPrice)}`}</a>
         </Link>
       </div>
     </section>

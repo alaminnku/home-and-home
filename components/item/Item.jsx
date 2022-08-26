@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { HiPlus, HiMinus } from "react-icons/hi";
+import { FaTrash } from "react-icons/fa";
 import { useCart } from "@contexts/CartContext";
 import { useEffect, useState } from "react";
 import styles from "@styles/item/Item.module.css";
@@ -79,14 +79,14 @@ export default function Item({ item }) {
             }`}
             onClick={decreaseQuantity}
           >
-            <AiOutlineMinus />
+            <HiMinus />
           </div>
           <p className={styles.quantity}>{quantity}</p>
           <div
             className={`${styles.plus} ${styles.icon}`}
             onClick={increaseQuantity}
           >
-            <AiOutlinePlus />
+            <HiPlus />
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function Item({ item }) {
             className={styles.remove_item}
             onClick={() => removeItemFromPage(item.id)}
           >
-            <RiDeleteBinLine />
+            <FaTrash />
             <p>Remove item</p>
           </div>
         )}
@@ -103,7 +103,7 @@ export default function Item({ item }) {
 
       <div className={styles.button}>
         <button onClick={() => addItemToCart(initialItem)}>
-          Add {quantity} to basket - {convertNumber(quantity * unitPrice)} LKR
+          Add {quantity} to basket • {convertNumber(quantity * unitPrice)} LKR
         </button>
       </div>
     </section>

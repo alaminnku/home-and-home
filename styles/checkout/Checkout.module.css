@@ -13,17 +13,38 @@
   padding: 0.55rem 0.75rem;
 }
 
+.checkout_top h1 {
+  font-size: var(--largest_font);
+}
+
 .items_top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.items_top a,
-.add_items a {
+.items_top p {
+  font-size: var(--large_font);
+}
+
+.items_top a {
   color: green;
   font-weight: 300;
   font-size: 0.9rem;
+}
+
+.add_items {
+  margin-top: 0.75rem;
+  display: inline-block;
+}
+
+.add_items a {
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  border-radius: 2rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--button_background);
 }
 
 .subtotal,
@@ -62,7 +83,7 @@
   display: inline-block;
   text-align: center;
   border: none;
-  font-size: 14px;
+  font-size: var(--button_font);
   width: 100%;
   cursor: pointer;
   pointer-events: none;
@@ -80,10 +101,6 @@
 @media (min-width: 375px) {
   .order {
     height: 4.5rem;
-  }
-
-  .order a {
-    font-size: 16px;
   }
 }
 

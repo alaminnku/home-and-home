@@ -11,7 +11,8 @@
 }
 
 .item h2 {
-  font-size: 1.2rem;
+  font-weight: 700;
+  font-size: var(--large_font);
   margin-bottom: 1rem;
 }
 
@@ -31,12 +32,12 @@
   margin-bottom: 0.25rem;
   color: var(--black);
   font-weight: 600;
+  font-size: var(--medium_font);
 }
 
 .description {
-  font-size: 0.8rem;
+  font-size: var(--small_font);
   color: var(--grey);
-  margin-bottom: 0.5rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -45,8 +46,9 @@
 
 .price {
   font-size: 0.75rem;
+  margin-bottom: 0.5rem;
   color: var(--black);
-  font-weight: 600;
+  font-size: var(--small_font);
 }
 
 .image {
@@ -72,19 +74,13 @@
   position: sticky;
   bottom: 1.25rem;
   border: none;
-  font-size: 14px;
+  font-size: var(--button_font);
   cursor: pointer;
   width: 100%;
   font-weight: 600;
   color: var(--white);
   background: var(--black);
   padding: 0.75rem 1.25rem;
-}
-
-@media (min-width: 375px) {
-  .button {
-    font-size: 16px;
-  }
 }
 
 @media (min-width: 414px) {

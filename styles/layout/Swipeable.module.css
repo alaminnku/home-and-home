@@ -4,7 +4,7 @@
 
 .items p,
 .items a {
-  font-size: 0.9rem;
+  font-size: var(--medium_font);
 }
 
 .item_and_action {
