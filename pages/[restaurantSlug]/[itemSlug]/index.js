@@ -67,6 +67,7 @@ export async function getStaticProps({ params }) {
     // Return the item
     return {
       props: { item },
+      revalidate: 1,
     };
   } catch (err) {
     // // If an item is not found

@@ -46,6 +46,7 @@ export async function getStaticProps({ params }) {
     // Return the restaurant
     return {
       props: { restaurant },
+      revalidate: 1,
     };
   } catch (err) {
     // If a restaurant is not found
