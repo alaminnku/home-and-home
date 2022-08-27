@@ -1,5 +1,6 @@
+import fs from "fs";
+import path from "path";
 import Item from "@components/item/Item";
-import { data } from "@data/restaurants.json";
 import { createSlug } from "@utils/index";
 
 export default function ItemPage({ item }) {
@@ -11,7 +12,14 @@ export default function ItemPage({ item }) {
 }
 
 export async function getStaticPaths() {
-  // Restaurants and items
+  // Get all restaurants data
+  const data = fs.readdirSync(path.join("data")).map((restaurantName) => {
+    const data = fs.readFileSync(path.join("data", restaurantName), "utf-8");
+
+    return JSON.parse(data);
+  });
+
+  // Get all restaurant's name and items
   const restaurantsAndItems = data.map((restaurant) => {
     return restaurant.categories.map((category) => {
       return category.items.map((item) => {
@@ -37,13 +45,19 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
-  // Find the restaurant
-  const restaurant = data.find(
-    (restaurant) => createSlug(restaurant.name) === restaurantSlug
-  );
+  // Get the restaurant
+  const restaurant = fs
+    .readdirSync(path.join("data"))
+    .find((fileName) => fileName === `${restaurantSlug}.json`);
 
-  //
-  const item = restaurant.categories
+  // Get the data
+  const data = fs.readFileSync(path.join("data", restaurant), "utf-8");
+
+  // Parse the data
+  const parsedData = JSON.parse(data);
+
+  // Get the item
+  const item = parsedData.categories
     .map((category) => category.items)
     .flat()
     .find((item) => createSlug(item.name) === itemSlug);

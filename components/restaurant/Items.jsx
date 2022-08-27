@@ -5,8 +5,6 @@ import { convertNumber, createSlug } from "@utils/index";
 import styles from "@styles/restaurant/Items.module.css";
 import { useCart } from "@contexts/CartContext";
 
-import { data } from "@data/restaurants";
-
 export default function Items({ restaurant }) {
   const router = useRouter();
   const { restaurantSlug } = router.query;
