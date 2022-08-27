@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { convertNumber, createSlug } from "@utils/index";
-import styles from "@styles/restaurant/Items.module.css";
 import { useCart } from "@contexts/CartContext";
+import styles from "@styles/restaurant/Items.module.css";
 
 export default function Items({ restaurant }) {
   const router = useRouter();
