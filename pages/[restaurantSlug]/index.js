@@ -25,24 +25,34 @@ export async function getStaticPaths() {
   // Return the array of slugs
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
-  // Get the file with restaurant slug
-  const data = fs.readFileSync(
-    path.join("data", `${restaurantSlug}.json`),
-    "utf-8"
-  );
+  // Return the restaurant or notFound
+  try {
+    // Get the file with restaurant slug
+    const data = fs.readFileSync(
+      path.join("data", `${restaurantSlug}.json`),
+      "utf-8"
+    );
 
-  // Parse the data
-  const restaurant = JSON.parse(data);
+    // Parse the data
+    const restaurant = JSON.parse(data);
 
-  // Return the restaurant
-  return {
-    props: { restaurant },
-  };
+    // Return the restaurant
+    return {
+      props: { restaurant },
+    };
+  } catch (err) {
+    // If a restaurant is not found
+    if (err) {
+      return {
+        notFound: true,
+      };
+    }
+  }
 }

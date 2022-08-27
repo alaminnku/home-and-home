@@ -38,31 +38,42 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
-  // Get the restaurant
-  const restaurant = fs
-    .readdirSync(path.join("data"))
-    .find((fileName) => fileName === `${restaurantSlug}.json`);
+  // Return the item or notFound
+  try {
+    // Get the restaurant
+    const restaurant = fs
+      .readdirSync(path.join("data"))
+      .find((fileName) => fileName === `${restaurantSlug}.json`);
 
-  // Get the data
-  const data = fs.readFileSync(path.join("data", restaurant), "utf-8");
+    // Get the data
+    const data = fs.readFileSync(path.join("data", restaurant), "utf-8");
 
-  // Parse the data
-  const parsedData = JSON.parse(data);
+    // Parse the data
+    const parsedData = JSON.parse(data);
 
-  // Get the item
-  const item = parsedData.categories
-    .map((category) => category.items)
-    .flat()
-    .find((item) => createSlug(item.name) === itemSlug);
+    // Get the item
+    const item = parsedData.categories
+      .map((category) => category.items)
+      .flat()
+      .find((item) => createSlug(item.name) === itemSlug);
 
-  return {
-    props: { item },
-  };
+    // Return the item
+    return {
+      props: { item },
+    };
+  } catch (err) {
+    // // If an item is not found
+    if (err) {
+      return {
+        notFound: true,
+      };
+    }
+  }
 }
