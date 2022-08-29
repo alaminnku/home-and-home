@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
@@ -35,18 +36,17 @@ export default function Home() {
         <p>Loading</p>
       ) : user ? (
         <>
-          <a
-            href="/api/auth/logout "
-            onClick={() => localStorage.removeItem("type")}
-          >
-            Logout
-          </a>
+          <Link href="/api/auth/logout">
+            <a onClick={() => localStorage.removeItem("type")}>Logout</a>
+          </Link>
           <h1>Hi.</h1>
           <h2>user.name = {user.name}</h2>
           <h2>user.sub = {user.sub}</h2>
         </>
       ) : (
-        <a href="/api/auth/login">Login</a>
+        <Link href="/api/auth/login">
+          <a>Login</a>
+        </Link>
       )}
       {error ? <h4>{error.message}</h4> : ""}
     </div>

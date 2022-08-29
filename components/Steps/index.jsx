@@ -1,6 +1,6 @@
 import styles from "@styles/steps/Steps.module.css";
 
-export default function ({ active }) {
+export default function Steps({ active }) {
   return (
     <div className={styles.steps}>
       <div className={active >= 1 ? styles.active : ""} />
