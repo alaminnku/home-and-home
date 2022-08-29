@@ -4,6 +4,9 @@ import Item from "@components/item";
 import { createSlug } from "@utils/index";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
+// Require login
+const requireLogin = false;
+
 function ItemPage({ item }) {
   return (
     <main>
@@ -85,4 +88,4 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default withPageAuthRequired(ItemPage);
+export default requireLogin ? withPageAuthRequired(ItemPage) : ItemPage;

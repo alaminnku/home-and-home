@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { ImArrowRight } from "react-icons/im";
 import { FaChevronLeft } from "react-icons/fa";
 import { firstNameAtom, lastNameAtom } from "@atoms/userinfo";
-import styles from "@styles/userInfo/userInfo.module.css";
+import styles from "@styles/userInfo/UserInfo.module.css";
 
 export default function Complete() {
   // router

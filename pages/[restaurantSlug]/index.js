@@ -5,6 +5,9 @@ import Items from "@components/restaurant/Items";
 import Cart from "@components/layout/Cart";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
+// Require login
+const requireLogin = false;
+
 function RestaurantPage({ restaurant }) {
   return (
     <main>
@@ -64,4 +67,6 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default withPageAuthRequired(RestaurantPage);
+export default requireLogin
+  ? withPageAuthRequired(RestaurantPage)
+  : RestaurantPage;
