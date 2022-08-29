@@ -3,10 +3,8 @@ import path from "path";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import Cart from "@components/layout/Cart";
+import { requireLogin } from "@utils/index";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-
-// Require login
-const requireLogin = false;
 
 function RestaurantPage({ restaurant }) {
   return (

@@ -1,8 +1,6 @@
 import Checkout from "@components/checkout";
+import { requireLogin } from "@utils/index";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-
-// Require login
-const requireLogin = false;
 
 function CheckoutPage() {
   return (

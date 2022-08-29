@@ -1,11 +1,8 @@
 import fs from "fs";
 import path from "path";
 import Item from "@components/item";
-import { createSlug } from "@utils/index";
+import { createSlug, requireLogin } from "@utils/index";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-
-// Require login
-const requireLogin = false;
 
 function ItemPage({ item }) {
   return (
