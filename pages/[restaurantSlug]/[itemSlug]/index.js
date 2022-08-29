@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
-import Item from "@components/item/Item";
+import Item from "@components/item";
 import { createSlug } from "@utils/index";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-export default function ItemPage({ item }) {
+function ItemPage({ item }) {
   return (
     <main>
       <Item item={item} />
@@ -64,13 +65,18 @@ export async function getStaticProps({ params }) {
       .flat()
       .find((item) => createSlug(item.name) === itemSlug);
 
+    // If no item found then throw an err
+    if (!item) {
+      throw "No item found";
+    }
+
     // Return the item
     return {
       props: { item },
       revalidate: 1,
     };
   } catch (err) {
-    // // If an item is not found
+    // If an item is not found
     if (err) {
       return {
         notFound: true,
@@ -78,3 +84,5 @@ export async function getStaticProps({ params }) {
     }
   }
 }
+
+export default withPageAuthRequired(ItemPage);

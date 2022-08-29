@@ -3,8 +3,9 @@ import path from "path";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import Cart from "@components/layout/Cart";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-export default function RestaurantPage({ restaurant }) {
+function RestaurantPage({ restaurant }) {
   return (
     <main>
       <Hero restaurant={restaurant} />
@@ -43,6 +44,11 @@ export async function getStaticProps({ params }) {
     // Parse the data
     const restaurant = JSON.parse(data);
 
+    // If no item found then throw an err
+    if (!restaurant) {
+      throw "No restaurant found";
+    }
+
     // Return the restaurant
     return {
       props: { restaurant },
@@ -57,3 +63,5 @@ export async function getStaticProps({ params }) {
     }
   }
 }
+
+export default withPageAuthRequired(RestaurantPage);

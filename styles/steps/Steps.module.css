@@ -1,0 +1,15 @@
+/** @format */
+
+.steps {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.steps > div {
+  height: 16px;
+  border-right: 1px solid #777;
+  background: #ddd;
+}
+.active {
+  background: black !important;
+}

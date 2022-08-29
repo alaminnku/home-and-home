@@ -1,12 +1,16 @@
 import { CartProvider } from "@contexts/CartContext";
+import { UserProvider } from "@auth0/nextjs-auth0";
+import { RecoilRoot } from "recoil";
 import "@styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <CartProvider>
-      <Component {...pageProps} />
-    </CartProvider>
+    <UserProvider>
+      <RecoilRoot>
+        <CartProvider>
+          <Component {...pageProps} />
+        </CartProvider>
+      </RecoilRoot>
+    </UserProvider>
   );
 }
-
-export default MyApp;

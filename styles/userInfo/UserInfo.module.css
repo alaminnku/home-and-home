@@ -1,0 +1,132 @@
+.user_info {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.wrap {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.wrap > h6 {
+  font-size: 54px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.wrap > p {
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.wrap > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+
+.wrap > div svg {
+  transition: 0.5s all;
+  animation: slideRight 2s infinite both;
+}
+
+.back {
+  margin: 20px;
+  font-size: 24px;
+}
+
+.firstname {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.input_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.input_content > label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.input_content > label > div {
+  width: 100%;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  margin-top: 8px;
+  transition: 0.25s all;
+}
+
+.input_content > label > div:active {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input_content > label > div > input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #999;
+  height: 40px;
+  font-size: 16px;
+}
+
+.input_content > label > div > input:focus {
+  outline: none;
+}
+
+.next {
+  align-self: flex-end;
+  background: black;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  transition: 0.25s all;
+}
+
+.next:active {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0);
+}
+
+.next > svg {
+  color: white;
+  font-size: 18px;
+}
+
+.proceeding {
+  width: 70%;
+}
+
+.proceeding > a {
+  border-bottom: 1px solid black;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-50px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
+}
