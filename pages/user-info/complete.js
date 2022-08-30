@@ -26,10 +26,16 @@ export default function Complete() {
     //     })
     //     .then(() => {
     //       console.log("object");
-    localStorage.setItem("type", "existing");
-    router.push("/");
     //     })
     //     .catch((e) => console.log("An error has occurred", e));
+
+    localStorage.setItem("type", "existing");
+
+    const visitedURL = JSON.parse(localStorage.getItem("visited-url"));
+
+    if (visitedURL) {
+      router.push(`/${visitedURL}`);
+    }
   };
 
   return (

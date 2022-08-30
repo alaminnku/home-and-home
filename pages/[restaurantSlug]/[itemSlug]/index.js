@@ -1,10 +1,29 @@
 import fs from "fs";
 import path from "path";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Item from "@components/item";
 import { createSlug, requireLogin } from "@utils/index";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 
 function ItemPage({ item }) {
+  const router = useRouter();
+  const { user } = useUser();
+
+  useEffect(() => {
+    const userType = localStorage.getItem("type");
+
+    if (user) {
+      if (user.type === "new" && !localStorage.getItem("type")) {
+        localStorage.setItem("visited-url", JSON.stringify(router.asPath));
+
+        router.push("/user-info");
+      } else if (userType === "existing") {
+        localStorage.removeItem("visited-url");
+      }
+    }
+  }, [router, user]);
+
   return (
     <main>
       <Item item={item} />
