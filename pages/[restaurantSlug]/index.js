@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import Cart from "@components/layout/Cart";
-import { requireLogin } from "@utils/index";
+import { requireLogin, checkUserType } from "@utils/index";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 function RestaurantPage({ restaurant }) {
@@ -13,17 +13,7 @@ function RestaurantPage({ restaurant }) {
   const { user } = useUser();
 
   useEffect(() => {
-    const userType = localStorage.getItem("type");
-
-    if (user) {
-      if (user.type === "new" && !localStorage.getItem("type")) {
-        localStorage.setItem("visited-url", JSON.stringify(router.asPath));
-
-        router.push("/user-info");
-      } else if (userType === "existing") {
-        localStorage.removeItem("visited-url");
-      }
-    }
+    checkUserType(router, user);
   }, [router, user]);
 
   return (
