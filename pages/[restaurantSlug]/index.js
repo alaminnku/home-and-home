@@ -41,34 +41,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
-  // try {
-  //   // Get the file with restaurant slug
-  //   const data = fs.readFileSync(
-  //     path.join("data", `${restaurantSlug}.json`),
-  //     "utf-8"
-  //   );
-
-  //   // Parse the data
-  //   const restaurant = JSON.parse(data);
-
-  //   // If no item found then throw an err
-  //   if (!restaurant) {
-  //     throw "No restaurant found";
-  //   }
-
-  //   // Return the restaurant
-  //   return {
-  //     props: { restaurant },
-  //   };
-  // } catch (err) {
-  //   // If a restaurant is not found
-  //   if (err) {
-  //     return {
-  //       notFound: true,
-  //     };
-  //   }
-  // }
-
   // Return the restaurant or notFound
   try {
     const res = await axios.get(
