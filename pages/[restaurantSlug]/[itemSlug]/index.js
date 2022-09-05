@@ -1,5 +1,6 @@
-import fs from "fs";
-import path from "path";
+import axios from "axios";
+// import fs from "fs";
+// import path from "path";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Item from "@components/item";
@@ -22,32 +23,12 @@ function ItemPage({ item }) {
 }
 
 export async function getStaticPaths() {
-  // Get all restaurants data
-  const data = fs.readdirSync(path.join("data")).map((restaurantName) => {
-    const data = fs.readFileSync(path.join("data", restaurantName), "utf-8");
-
-    return JSON.parse(data);
-  });
-
-  // Get all restaurant's name and items
-  const restaurantsAndItems = data.map((restaurant) => {
-    return restaurant.categories.map((category) => {
-      return category.items.map((item) => {
-        return {
-          params: {
-            itemSlug: createSlug(item.name),
-            restaurantSlug: createSlug(restaurant.name),
-          },
-        };
-      });
-    });
-  });
-
-  // Flat the array
-  const paths = restaurantsAndItems.flat(2);
-
   return {
-    paths,
+    paths: [
+      {
+        params: { itemSlug: "not-an-item", restaurantSlug: "not-a-restaurant" },
+      },
+    ],
     fallback: "blocking",
   };
 }
@@ -55,21 +36,52 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
+  // try {
+  //   // Get the restaurant
+  //   const restaurant = fs
+  //     .readdirSync(path.join("data"))
+  //     .find((fileName) => fileName === `${restaurantSlug}.json`);
+
+  //   // Get the data
+  //   const data = fs.readFileSync(path.join("data", restaurant), "utf-8");
+
+  //   // Parse the data
+  //   const parsedData = JSON.parse(data);
+
+  //   // Get the item
+  //   const item = parsedData.categories
+  //     .map((category) => category.items)
+  //     .flat()
+  //     .find((item) => createSlug(item.name) === itemSlug);
+
+  //   // If no item found then throw an err
+  //   if (!item) {
+  //     throw "No item found";
+  //   }
+
+  //   // Return the item
+  //   return {
+  //     props: { item },
+  //   };
+  // } catch (err) {
+  //   // If an item is not found
+  //   if (err) {
+  //     return {
+  //       notFound: true,
+  //     };
+  //   }
+  // }
+
   // Return the item or notFound
   try {
-    // Get the restaurant
-    const restaurant = fs
-      .readdirSync(path.join("data"))
-      .find((fileName) => fileName === `${restaurantSlug}.json`);
+    const res = await axios.get(
+      `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
+    );
 
-    // Get the data
-    const data = fs.readFileSync(path.join("data", restaurant), "utf-8");
-
-    // Parse the data
-    const parsedData = JSON.parse(data);
+    const restaurant = res.data;
 
     // Get the item
-    const item = parsedData.categories
+    const item = restaurant.categories
       .map((category) => category.items)
       .flat()
       .find((item) => createSlug(item.name) === itemSlug);
@@ -82,7 +94,6 @@ export async function getStaticProps({ params }) {
     // Return the item
     return {
       props: { item },
-      revalidate: 1,
     };
   } catch (err) {
     // If an item is not found

@@ -1,5 +1,6 @@
-import fs from "fs";
-import path from "path";
+import axios from "axios";
+// import fs from "fs";
+// import path from "path";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Hero from "@components/restaurant/Hero";
@@ -26,16 +27,13 @@ function RestaurantPage({ restaurant }) {
 }
 
 export async function getStaticPaths() {
-  // Slugs
-  const paths = fs.readdirSync(path.join("data")).map((fileName) => {
-    return {
-      params: { restaurantSlug: fileName.replace(".json", "") },
-    };
-  });
-
   // Return the array of slugs
   return {
-    paths,
+    paths: [
+      {
+        params: { restaurantSlug: "not-a-restaurant" },
+      },
+    ],
     fallback: "blocking",
   };
 }
@@ -43,18 +41,43 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
+  // try {
+  //   // Get the file with restaurant slug
+  //   const data = fs.readFileSync(
+  //     path.join("data", `${restaurantSlug}.json`),
+  //     "utf-8"
+  //   );
+
+  //   // Parse the data
+  //   const restaurant = JSON.parse(data);
+
+  //   // If no item found then throw an err
+  //   if (!restaurant) {
+  //     throw "No restaurant found";
+  //   }
+
+  //   // Return the restaurant
+  //   return {
+  //     props: { restaurant },
+  //   };
+  // } catch (err) {
+  //   // If a restaurant is not found
+  //   if (err) {
+  //     return {
+  //       notFound: true,
+  //     };
+  //   }
+  // }
+
   // Return the restaurant or notFound
   try {
-    // Get the file with restaurant slug
-    const data = fs.readFileSync(
-      path.join("data", `${restaurantSlug}.json`),
-      "utf-8"
+    const res = await axios.get(
+      `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
     );
 
-    // Parse the data
-    const restaurant = JSON.parse(data);
+    const restaurant = res.data;
 
-    // If no item found then throw an err
+    // Throw error if there is no restaurant
     if (!restaurant) {
       throw "No restaurant found";
     }
@@ -62,7 +85,6 @@ export async function getStaticProps({ params }) {
     // Return the restaurant
     return {
       props: { restaurant },
-      revalidate: 1,
     };
   } catch (err) {
     // If a restaurant is not found

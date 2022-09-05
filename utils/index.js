@@ -6,7 +6,7 @@ export const convertNumber = (number) =>
   parseFloat(number).toLocaleString("en-US");
 
 // Require login flag
-export const requireLogin = true;
+export const requireLogin = false;
 
 // Check the user type
 export function checkUserType(router, user) {
