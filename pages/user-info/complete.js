@@ -3,7 +3,7 @@ import Steps from "@components/Steps";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { ImArrowRight } from "react-icons/im";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { firstNameAtom, lastNameAtom } from "@atoms/userinfo";
 import styles from "@styles/userInfo/UserInfo.module.css";
 
@@ -42,17 +42,17 @@ export default function Complete() {
     <div className={styles.user_info}>
       <Steps active={4} />
       <FaChevronLeft className={styles.back} onClick={() => router.back()} />
-      <div className={styles.wrap}>
-        <h6>Hello!</h6>
-        <p>
-          {firstName} {lastName}
-        </p>
-        <div onClick={handleClick}>
+      <div className={styles.complete}>
+        <div className={styles.content}>
+          <h6>Hello!</h6>
           <span className={styles.proceeding}>
             By proceeding you accept our <a>terms</a> & <a>conditions</a>
           </span>
-          <ImArrowRight />
         </div>
+
+        <span className={styles.next} onClick={handleClick}>
+          <FaChevronRight />
+        </span>
       </div>
     </div>
   );
