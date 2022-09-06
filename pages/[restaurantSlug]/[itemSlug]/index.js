@@ -1,6 +1,4 @@
 import axios from "axios";
-// import fs from "fs";
-// import path from "path";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Item from "@components/item";

@@ -6,10 +6,10 @@ export const convertNumber = (number) =>
   parseFloat(number).toLocaleString("en-US");
 
 // Require login flag
-export const requireLogin = false;
+export const requireLogin = true;
 
 // Check the user type
-export function checkUserType(router, user) {
+export function checkUserType(router, user, setIsLoading) {
   const url = router.asPath;
   const userType = localStorage.getItem("type");
 
@@ -17,8 +17,11 @@ export function checkUserType(router, user) {
     if (user.type === "new" && !localStorage.getItem("type")) {
       localStorage.setItem("visited-url", JSON.stringify(url));
 
-      router.push("/user-info");
-    } else if (userType === "existing") {
+      setTimeout(() => {
+        router.push("/user-info");
+      }, 2000);
+    } else if (userType === "existing" || user.type === "existing") {
+      setIsLoading(false);
       localStorage.removeItem("visited-url");
     }
   }

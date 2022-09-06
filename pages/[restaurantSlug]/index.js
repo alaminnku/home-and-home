@@ -1,7 +1,5 @@
 import axios from "axios";
-// import fs from "fs";
-// import path from "path";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
@@ -12,15 +10,16 @@ import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 function RestaurantPage({ restaurant }) {
   const router = useRouter();
   const { user } = useUser();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    checkUserType(router, user);
+    checkUserType(router, user, setIsLoading);
   }, [router, user]);
 
   return (
     <main>
-      <Hero restaurant={restaurant} />
-      <Items restaurant={restaurant} />
+      <Hero restaurant={restaurant} isLoading={isLoading} />
+      <Items restaurant={restaurant} isLoading={isLoading} />
       <Cart />
     </main>
   );
