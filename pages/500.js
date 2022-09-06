@@ -1,6 +1,6 @@
 import Hero from "@components/error/Hero";
 
-export default function ClientError() {
+export default function ServerError() {
   return (
     <main>
       <Hero />
