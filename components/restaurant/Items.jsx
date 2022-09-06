@@ -16,11 +16,7 @@ export default function Items({ restaurant, isLoading }) {
     <section className={styles.categories}>
       {restaurant.categories.map((category) => (
         <div className={styles.category} key={category.id}>
-          {isLoading ? (
-            <Skeleton width={122} height={36} />
-          ) : (
-            <h2>{category.name}</h2>
-          )}
+          {isLoading ? null : <h2>{category.name}</h2>}
           {category.items.map((item) => (
             <Link
               key={item.id}
