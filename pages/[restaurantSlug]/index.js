@@ -29,11 +29,7 @@ function RestaurantPage({ restaurant }) {
 export async function getStaticPaths() {
   // Return the array of slugs
   return {
-    paths: [
-      {
-        params: { restaurantSlug: "not-a-restaurant" },
-      },
-    ],
+    paths: [],
     fallback: "blocking",
   };
 }
@@ -41,31 +37,24 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
-  // Return the restaurant or notFound
-  try {
-    const res = await axios.get(
-      `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
-    );
+  // Fetch the restaurant
+  const res = await axios.get(
+    `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
+  );
 
-    const restaurant = res.data;
+  const restaurant = res.data;
 
-    // Throw error if there is no restaurant
-    if (!restaurant) {
-      throw "No restaurant found";
-    }
-
-    // Return the restaurant
+  // Return notFound is not restaurant is found
+  if (!restaurant) {
     return {
-      props: { restaurant },
+      notFound: true,
     };
-  } catch (err) {
-    // If a restaurant is not found
-    if (err) {
-      return {
-        notFound: true,
-      };
-    }
   }
+
+  // Return the restaurant
+  return {
+    props: { restaurant },
+  };
 }
 
 export default requireLogin

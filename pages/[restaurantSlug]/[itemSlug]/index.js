@@ -24,11 +24,7 @@ function ItemPage({ item }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      {
-        params: { itemSlug: "not-an-item", restaurantSlug: "not-a-restaurant" },
-      },
-    ],
+    paths: [],
     fallback: "blocking",
   };
 }
@@ -36,37 +32,30 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
-  // Return the item or notFound
-  try {
-    const res = await axios.get(
-      `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
-    );
+  // Fetch the restaurant
+  const res = await axios.get(
+    `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
+  );
 
-    const restaurant = res.data;
+  const restaurant = res.data;
 
-    // Get the item
-    const item = restaurant.categories
-      .map((category) => category.items)
-      .flat()
-      .find((item) => createSlug(item.name) === itemSlug);
+  // Get the item
+  const item = restaurant.categories
+    .map((category) => category.items)
+    .flat()
+    .find((item) => createSlug(item.name) === itemSlug);
 
-    // If no item found then throw an err
-    if (!item) {
-      throw "No item found";
-    }
-
-    // Return the item
+  // Return notFound if no item is found
+  if (!item) {
     return {
-      props: { item },
+      notFound: true,
     };
-  } catch (err) {
-    // If an item is not found
-    if (err) {
-      return {
-        notFound: true,
-      };
-    }
   }
+
+  // Return the item
+  return {
+    props: { item },
+  };
 }
 
 export default requireLogin ? withPageAuthRequired(ItemPage) : ItemPage;
