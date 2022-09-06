@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Item from "@components/item";
 import { createSlug, requireLogin, checkUserType } from "@utils/index";
@@ -8,9 +8,10 @@ import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 function ItemPage({ item }) {
   const router = useRouter();
   const { user } = useUser();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    checkUserType(router, user);
+    checkUserType(router, user, setIsLoading);
   }, [router, user]);
 
   return (
