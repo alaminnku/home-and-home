@@ -45,6 +45,9 @@ export default function Complete() {
       <div className={styles.complete}>
         <div className={styles.content}>
           <h6>Hello!</h6>
+          <p>
+            {firstName} {lastName}
+          </p>
           <span className={styles.proceeding}>
             By proceeding you accept our <a>terms</a> & <a>conditions</a>
           </span>

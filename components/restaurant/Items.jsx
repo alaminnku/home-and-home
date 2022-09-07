@@ -25,7 +25,7 @@ export default function Items({ restaurant, isLoading }) {
               <a className={styles.item}>
                 <div className={styles.header}>
                   {isLoading ? (
-                    <Skeleton width={170} height={27} />
+                    <Skeleton width={150} height={27} />
                   ) : (
                     <p className={styles.title}>{item.name}</p>
                   )}
@@ -39,14 +39,14 @@ export default function Items({ restaurant, isLoading }) {
                   )}
 
                   {isLoading ? (
-                    <Skeleton width={288} height={71} />
+                    <Skeleton width={250} height={60} />
                   ) : (
                     <p className={styles.description}>{item.description}</p>
                   )}
                 </div>
                 <div className={styles.image}>
                   {isLoading ? (
-                    <Skeleton width={96} height={96} />
+                    <Skeleton width={85} height={85} />
                   ) : (
                     <Image
                       src={item.image}

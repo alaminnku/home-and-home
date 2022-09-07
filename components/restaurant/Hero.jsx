@@ -10,7 +10,7 @@ export default function Hero({ restaurant, isLoading }) {
     <section>
       <div className={styles.banner}>
         {isLoading ? (
-          <Skeleton height={186} width={424} />
+          <Skeleton height={186} />
         ) : (
           <Image
             src={banner}
@@ -24,7 +24,7 @@ export default function Hero({ restaurant, isLoading }) {
       </div>
 
       <div className={styles.header}>
-        {isLoading ? <Skeleton height={60} width={330} /> : <h1>{name}</h1>}
+        {isLoading ? <Skeleton height={60} width={300} /> : <h1>{name}</h1>}
 
         {isLoading ? null : <p>{address}</p>}
       </div>
