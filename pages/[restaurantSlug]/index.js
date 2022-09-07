@@ -14,7 +14,6 @@ function RestaurantPage({ restaurant }) {
 
   useEffect(() => {
     checkUserType(router, user, setIsLoading);
-    setIsLoading(true);
   }, [router, user]);
 
   return (
