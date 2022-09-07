@@ -39,14 +39,14 @@ export default function Items({ restaurant, isLoading }) {
                   )}
 
                   {isLoading ? (
-                    <Skeleton width={250} height={60} />
+                    <Skeleton height={60} />
                   ) : (
                     <p className={styles.description}>{item.description}</p>
                   )}
                 </div>
                 <div className={styles.image}>
                   {isLoading ? (
-                    <Skeleton width={85} height={85} />
+                    <Skeleton height={85} />
                   ) : (
                     <Image
                       src={item.image}

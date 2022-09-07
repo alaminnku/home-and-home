@@ -24,7 +24,7 @@ export default function Hero({ restaurant, isLoading }) {
       </div>
 
       <div className={styles.header}>
-        {isLoading ? <Skeleton height={60} width={300} /> : <h1>{name}</h1>}
+        {isLoading ? <Skeleton width={300} height={60} /> : <h1>{name}</h1>}
 
         {isLoading ? null : <p>{address}</p>}
       </div>
