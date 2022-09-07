@@ -4,42 +4,8 @@
   height: 100vh;
 }
 
-.wrap {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.wrap > h6 {
-  font-size: 54px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.wrap > p {
-  margin: 0;
-  font-size: 24px;
-  margin-bottom: 40px;
-  font-weight: 500;
-}
-
-.wrap > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: 0.5s all;
-  cursor: pointer;
-}
-
-.wrap > div svg {
-  transition: 0.5s all;
-  animation: slideRight 2s infinite both;
-}
-
-.complete {
+.complete,
+.start {
   flex: 1;
   padding: 20px;
   display: flex;
@@ -62,14 +28,14 @@
 
 .content p {
   margin: 0;
-  font-size: 24px;
-  margin-bottom: 40px;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
   font-weight: 500;
 }
 
 .back {
-  margin: 20px;
-  font-size: 24px;
+  margin: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .firstname {
@@ -87,7 +53,7 @@
   flex: 1;
 }
 
-.input_content > label {
+.input_content label {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -95,7 +61,7 @@
   font-weight: 600;
 }
 
-.input_content > label > div {
+.input_content label div {
   width: 100%;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   padding: 12px;
@@ -103,11 +69,11 @@
   transition: 0.25s all;
 }
 
-.input_content > label > div:active {
+.input_content label div:active {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.input_content > label > div > input {
+.input_content label div input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #999;
@@ -115,7 +81,7 @@
   font-size: 16px;
 }
 
-.input_content > label > div > input:focus {
+.input_content label div input:focus {
   outline: none;
 }
 
@@ -136,7 +102,7 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0);
 }
 
-.next > svg {
+.next svg {
   color: white;
   font-size: 18px;
 }
@@ -145,16 +111,6 @@
   width: 70%;
 }
 
-.proceeding > a {
+.proceeding a {
   border-bottom: 1px solid black;
-}
-
-@keyframes slideRight {
-  from {
-    transform: translateX(-50px);
-  }
-
-  to {
-    transform: translateX(0px);
-  }
 }
