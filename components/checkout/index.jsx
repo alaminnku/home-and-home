@@ -14,11 +14,15 @@ export default function Checkout() {
   const { setPlacingOrder, setOrderAttributes } = useOrder();
   const { cartItems, totalCartPrice } = useCart();
 
+  // Handle place order
   function handlePlaceOrder() {
+    // Start the loader and push to placing order page
     setPlacingOrder(true);
     router.push(`/${restaurantSlug}/placing-order`);
 
+    // After 2 seconds run these codes
     setTimeout(async () => {
+      // Create the order
       const order = {
         data: {
           order: {
@@ -29,16 +33,20 @@ export default function Checkout() {
       };
 
       try {
-        const res = await axios.post(
+        // Post the data to API
+        await axios.post(
           "https://az-func-testing.azurewebsites.net/api/order",
           JSON.stringify(order)
         );
 
+        // Update order attributes state
         setOrderAttributes(res.data.data.attributes);
 
-        setPlacingOrder(false);
-
+        // Push to the order received page
         router.push(`/${restaurantSlug}/order-received`);
+
+        // Stop the loader
+        setPlacingOrder(false);
       } catch (err) {
         console.log(err);
       }

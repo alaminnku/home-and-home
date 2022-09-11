@@ -3,11 +3,20 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { useRouter } from "next/router";
 import { useOrder } from "@contexts/OrderContext";
 import styles from "@styles/order-received/OrderReceived.module.css";
+import { useEffect } from "react";
 
 export default function OrderReceived() {
   const router = useRouter();
   const { restaurantSlug } = router.query;
   const { orderAttributes } = useOrder();
+
+  // If there are no order attributes
+  // then push to the restaurant page
+  useEffect(() => {
+    if (!orderAttributes && restaurantSlug) {
+      router.push(`/${restaurantSlug}`);
+    }
+  }, [router]);
 
   return (
     <section className={styles.order_received}>

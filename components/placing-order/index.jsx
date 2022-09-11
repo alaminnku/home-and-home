@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BiCheck } from "react-icons/bi";
 import { useCart } from "@contexts/CartContext";
 import { useOrder } from "@contexts/OrderContext";
@@ -6,8 +7,18 @@ import MoonLoader from "react-spinners/MoonLoader";
 import styles from "@styles/placing-order/PlacingOrder.module.css";
 
 export default function PlacingOrder() {
+  const router = useRouter();
+  const { restaurantSlug } = router.query;
   const { cartItems } = useCart();
   const { placingOrder } = useOrder();
+
+  // If placing order is false
+  // then push to the restaurant page
+  useEffect(() => {
+    if (!placingOrder && restaurantSlug) {
+      router.push(`/${restaurantSlug}`);
+    }
+  }, [router]);
 
   return (
     <section className={styles.placing_order}>

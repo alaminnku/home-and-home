@@ -47,15 +47,15 @@ export async function getStaticProps({ params }) {
   // Get the category
   const category = restaurant.categories.find((category) =>
     category.items.find(
-      (itemInCategory) => itemInCategory.id === initialItem.id
+      (itemInCategory) => itemInCategory.id === initialItem?.id
     )
-  ).name;
+  )?.name;
 
   // Final item
   const item = { ...initialItem, category };
 
   // Return notFound if no item is found
-  if (!item) {
+  if (!initialItem) {
     return {
       notFound: true,
     };
