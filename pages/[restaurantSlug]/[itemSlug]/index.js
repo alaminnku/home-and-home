@@ -38,11 +38,21 @@ export async function getStaticProps({ params }) {
 
   const restaurant = res.data;
 
-  // Get the item
-  const item = restaurant.categories
+  // Get the initial item
+  const initialItem = restaurant.categories
     .map((category) => category.items)
     .flat()
     .find((item) => createSlug(item.name) === itemSlug);
+
+  // Get the category
+  const category = restaurant.categories.find((category) =>
+    category.items.find(
+      (itemInCategory) => itemInCategory.id === initialItem.id
+    )
+  ).name;
+
+  // Final item
+  const item = { ...initialItem, category };
 
   // Return notFound if no item is found
   if (!item) {

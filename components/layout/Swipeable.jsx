@@ -121,7 +121,7 @@ export default function Swipeable({ items }) {
             </div>
 
             <p className={styles.price}>
-              LKR {convertNumber(item.unitPrice * item.quantity)}
+              LKR {convertNumber(item.price * item.quantity)}
             </p>
           </div>
 

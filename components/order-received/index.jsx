@@ -1,11 +1,20 @@
 import { BiLeftArrowAlt } from "react-icons/bi";
-
+import { Player } from "@lottiefiles/react-lottie-player";
+import { useRouter } from "next/router";
+import { useOrder } from "@contexts/OrderContext";
 import styles from "@styles/order-received/OrderReceived.module.css";
 
 export default function OrderReceived() {
+  const router = useRouter();
+  const { restaurantSlug } = router.query;
+  const { orderAttributes } = useOrder();
+
   return (
     <section className={styles.order_received}>
-      <div className={styles.back_icon}>
+      <div
+        className={styles.back_icon}
+        onClick={() => router.push(`/${restaurantSlug}`)}
+      >
         <BiLeftArrowAlt />
       </div>
 
@@ -13,9 +22,17 @@ export default function OrderReceived() {
         <h1>Order received</h1>
         <p>
           WhatsApp confirmation sent <br /> You will be contacted to arrange
-          payment by <span>time</span>{" "}
+          payment by <span>{orderAttributes?.contactDisplayString}</span>
         </p>
       </div>
+
+      <Player
+        autoplay
+        loop
+        // src="https://assets1.lottiefiles.com/packages/lf20_myejiggj.json"
+        src={orderAttributes?.lottie}
+        style={{ height: "15rem", width: "15rem" }}
+      />
     </section>
   );
 }

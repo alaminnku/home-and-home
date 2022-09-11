@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
 
   // Calculate total price
   const totalCartPrice = cartItems.reduce(
-    (price, currItem) => price + currItem.totalPrice,
+    (price, currItem) => price + currItem.total,
     0
   );
 
@@ -48,7 +48,7 @@ export function CartProvider({ children }) {
           return {
             ...cartItem,
             quantity: initialItem.quantity,
-            totalPrice: initialItem.totalPrice,
+            total: initialItem.total,
           };
         } else {
           return cartItem;

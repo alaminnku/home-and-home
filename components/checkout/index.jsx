@@ -5,18 +5,44 @@ import { HiPlus } from "react-icons/hi";
 import Swipeable from "@components/layout/Swipeable";
 import { convertNumber } from "@utils/index";
 import styles from "@styles/checkout/Checkout.module.css";
+import axios from "axios";
+import { useOrder } from "@contexts/OrderContext";
 
 export default function Checkout() {
   const router = useRouter();
-  const { cartItems, totalCartPrice } = useCart();
   const { restaurantSlug } = router.query;
+  const { setPlacingOrder, setOrderAttributes } = useOrder();
+  const { cartItems, totalCartPrice } = useCart();
 
   function handlePlaceOrder() {
+    setPlacingOrder(true);
     router.push(`/${restaurantSlug}/placing-order`);
 
-    setTimeout(() => {
-      console.log("test");
-    }, 3000);
+    setTimeout(async () => {
+      const order = {
+        data: {
+          order: {
+            orderedItems: cartItems,
+            total: totalCartPrice,
+          },
+        },
+      };
+
+      try {
+        const res = await axios.post(
+          "https://az-func-testing.azurewebsites.net/api/order",
+          JSON.stringify(order)
+        );
+
+        setOrderAttributes(res.data.data.attributes);
+
+        setPlacingOrder(false);
+
+        router.push(`/${restaurantSlug}/order-received`);
+      } catch (err) {
+        console.log(err);
+      }
+    }, 2000);
   }
 
   return (

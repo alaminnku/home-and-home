@@ -11,14 +11,17 @@ export default function Item({ item }) {
   const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
     id: item.id,
+    category: item.category,
     name: item.name,
+    description: item.description,
+    image: item.image,
     quantity: 1,
-    unitPrice: parseFloat(item.price),
-    totalPrice: parseFloat(item.price),
+    price: parseFloat(item.price),
+    total: parseFloat(item.price),
   });
 
-  // Quantity and unit price
-  const { quantity, unitPrice } = initialItem;
+  // Quantity and price
+  const { quantity, price } = initialItem;
 
   // Update item in cart
   useEffect(() => {
@@ -30,7 +33,7 @@ export default function Item({ item }) {
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: itemInCart?.quantity || 1,
-      totalPrice: itemInCart?.totalPrice || prevItem.totalPrice,
+      total: itemInCart?.total || prevItem.total,
     }));
   }, [itemInCart]);
 
@@ -39,7 +42,7 @@ export default function Item({ item }) {
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: prevItem.quantity + 1,
-      totalPrice: parseFloat(prevItem.unitPrice * (prevItem.quantity + 1)),
+      total: parseFloat(prevItem.price * (prevItem.quantity + 1)),
     }));
   }
 
@@ -48,7 +51,7 @@ export default function Item({ item }) {
     setInitialItem((prevItem) => ({
       ...prevItem,
       quantity: prevItem.quantity - 1,
-      totalPrice: parseFloat(prevItem.unitPrice * (prevItem.quantity - 1)),
+      total: parseFloat(prevItem.price * (prevItem.quantity - 1)),
     }));
   }
 
@@ -101,7 +104,7 @@ export default function Item({ item }) {
 
       <div className={styles.button}>
         <button onClick={() => addItemToCart(initialItem)}>
-          Add {quantity} to basket • {convertNumber(quantity * unitPrice)} LKR
+          Add {quantity} to basket • {convertNumber(quantity * price)} LKR
         </button>
       </div>
     </section>

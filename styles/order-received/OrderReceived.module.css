@@ -4,6 +4,7 @@
 
 .back_icon {
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .back_icon svg {
