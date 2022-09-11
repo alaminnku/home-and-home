@@ -1,0 +1,24 @@
+.order_received {
+  padding: 0.55rem 0.75rem;
+}
+
+.back_icon {
+  margin-bottom: 1rem;
+}
+
+.back_icon svg {
+  font-size: 2rem;
+}
+
+.order_received_top h1 {
+  font-size: var(--largest_font);
+  margin-bottom: 0.5rem;
+}
+
+.order_received_top p {
+  color: var(--grey);
+}
+
+.order_received p span {
+  color: var(--black);
+}

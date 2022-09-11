@@ -99,6 +99,8 @@
 }
 
 .button {
+  display: flex;
+  align-items: center;
   height: 4rem;
   position: sticky;
   bottom: 0;

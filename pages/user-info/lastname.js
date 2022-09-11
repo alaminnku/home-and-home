@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import Steps from "@components/Steps";
+import Steps from "@components/steps";
 import { lastNameAtom } from "@atoms/userinfo";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import styles from "@styles/userInfo/UserInfo.module.css";

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { FaChevronRight } from "react-icons/fa";
-import Steps from "@components/Steps";
+import Steps from "@components/steps";
 import styles from "@styles/userInfo/UserInfo.module.css";
 
 export default function UserInfo() {

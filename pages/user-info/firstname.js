@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Steps from "@components/Steps";
+import Steps from "@components/steps";
 import { useRecoilState } from "recoil";
 import { firstNameAtom } from "../../atoms/userinfo";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";

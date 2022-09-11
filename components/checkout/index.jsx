@@ -11,6 +11,14 @@ export default function Checkout() {
   const { cartItems, totalCartPrice } = useCart();
   const { restaurantSlug } = router.query;
 
+  function handlePlaceOrder() {
+    router.push(`/${restaurantSlug}/placing-order`);
+
+    setTimeout(() => {
+      console.log("test");
+    }, 3000);
+  }
+
   return (
     <section className={styles.checkout}>
       <div className={styles.checkout_top}>
@@ -49,12 +57,11 @@ export default function Checkout() {
         </p>
       </div>
 
-      <div className={styles.order}>
-        <Link href="/">
-          <a
-            className={cartItems.length > 0 ? styles.active : null}
-          >{`Place order • LKR ${convertNumber(totalCartPrice)}`}</a>
-        </Link>
+      <div className={styles.button}>
+        <button
+          onClick={handlePlaceOrder}
+          className={cartItems.length > 0 ? styles.active : null}
+        >{`Place order • LKR ${convertNumber(totalCartPrice)}`}</button>
       </div>
     </section>
   );

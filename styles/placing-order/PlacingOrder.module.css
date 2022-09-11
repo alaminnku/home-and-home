@@ -1,0 +1,52 @@
+.placing_order_top,
+.items_top,
+.items {
+  padding: 0.55rem 0.75rem;
+}
+
+.placing_order_top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.55rem;
+  justify-content: space-between;
+}
+
+.placing_order_top h1 {
+  font-size: var(--largest_font);
+}
+
+.items_top {
+  display: flex;
+  align-items: center;
+}
+
+.items_top svg {
+  color: green;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.items_top p {
+  color: var(--grey);
+  font-size: var(--large_font);
+}
+
+.items {
+  margin-left: 1.75rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0rem;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--border_color);
+}

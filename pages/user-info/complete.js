@@ -1,8 +1,7 @@
 import axios from "axios";
-import Steps from "@components/Steps";
+import Steps from "@components/steps";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
-import { ImArrowRight } from "react-icons/im";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { firstNameAtom, lastNameAtom } from "@atoms/userinfo";
 import styles from "@styles/userInfo/UserInfo.module.css";
