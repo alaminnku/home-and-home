@@ -34,7 +34,7 @@ export default function Checkout() {
 
       try {
         // Post the data to API
-        await axios.post(
+        const res = await axios.post(
           "https://az-func-testing.azurewebsites.net/api/order",
           JSON.stringify(order)
         );
