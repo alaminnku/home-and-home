@@ -12,7 +12,7 @@ export default function Checkout() {
   const router = useRouter();
   const { restaurantSlug } = router.query;
   const { setPlacingOrder, setOrderAttributes } = useOrder();
-  const { cartItems, totalCartPrice } = useCart();
+  const { cartItems, setCartItems, totalCartPrice } = useCart();
 
   // Handle place order
   function handlePlaceOrder() {
@@ -47,6 +47,12 @@ export default function Checkout() {
 
         // Stop the loader
         setPlacingOrder(false);
+
+        // Remove cart items from local storage
+        localStorage.removeItem(`${restaurantSlug}-cart`);
+
+        // Set cart items to an empty array
+        setCartItems([]);
       } catch (err) {
         console.log(err);
       }

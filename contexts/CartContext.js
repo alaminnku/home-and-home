@@ -106,6 +106,7 @@ export function CartProvider({ children }) {
         openCart,
         closeCart,
         cartItems,
+        setCartItems,
         totalCartPrice,
         totalCartQuantity,
         addItemToCart,
