@@ -16,17 +16,15 @@ export default function Complete() {
 
   // handle go to main page
   const handleClick = () => {
-    // uncomment all the commented code
-
-    //   axios
-    //     .post("/api/saveUserInfo", {
-    //       firstName,
-    //       lastName,
-    //     })
-    //     .then(() => {
-    //       console.log("object");
-    //     })
-    //     .catch((e) => console.log("An error has occurred", e));
+      axios
+        .post("/api/saveUserInfo", {
+          firstName,
+          lastName,
+        })
+        .then(() => {
+          console.log("User created");
+        })
+        .catch((e) => console.log("An error has occurred", e));
 
     localStorage.setItem("type", "existing");
 
