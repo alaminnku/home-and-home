@@ -6,8 +6,9 @@ export const convertNumber = (number) =>
   parseFloat(number).toLocaleString("en-US");
 
 // Require login flag
-export const requireLogin = false;
+export const requireLogin = true;
 
+// Base API URL
 export const baseUrl = "https://az-func-testing.azurewebsites.net";
 
 // Check the user type

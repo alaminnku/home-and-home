@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useRouter } from "next/router";
 import { useOrder } from "@contexts/OrderContext";
 import styles from "@styles/order-received/OrderReceived.module.css";
-import { useEffect } from "react";
 
 export default function OrderReceived() {
   const router = useRouter();
