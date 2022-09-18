@@ -3,10 +3,14 @@ import { HiPlus, HiMinus } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
 import { useCart } from "@contexts/CartContext";
 import { useEffect, useState } from "react";
-import styles from "@styles/item/Item.module.css";
 import { convertNumber } from "@utils/index";
+import { BiLeftArrowAlt } from "react-icons/bi";
+import styles from "@styles/item/Item.module.css";
+import { useRouter } from "next/router";
 
 export default function Item({ item }) {
+  const router = useRouter();
+  const { restaurantSlug } = router.query;
   const [itemInCart, setItemInCart] = useState();
   const { cartItems, addItemToCart, removeItemFromPage } = useCart();
   const [initialItem, setInitialItem] = useState({
@@ -59,6 +63,13 @@ export default function Item({ item }) {
     <section className={styles.item}>
       <div className={styles.item_top}>
         <div className={styles.banner}>
+          <div
+            className={styles.back_icon}
+            onClick={() => router.push(`/${restaurantSlug}`)}
+          >
+            <BiLeftArrowAlt />
+          </div>
+
           <Image
             src={item.image}
             width={16}
