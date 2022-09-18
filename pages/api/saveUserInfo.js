@@ -5,7 +5,7 @@ import { getAccessToken, withApiAuthRequired } from "@auth0/nextjs-auth0";
 export default withApiAuthRequired(async function products(req, res) {
   // Check if the request method is POST
   if (req.method === "POST") {
-    const { firstName, lastName, userId, userEmail } = req.body;
+    const { firstName, lastName, userId, userEmail, userPhone } = req.body;
     const { accessToken } = await getAccessToken(req, res);
 
     // Stringify the data
@@ -16,7 +16,7 @@ export default withApiAuthRequired(async function products(req, res) {
           first_name: firstName,
           last_name: lastName,
           email: userEmail,
-          phone: "",
+          phone: userPhone,
         },
       },
     });

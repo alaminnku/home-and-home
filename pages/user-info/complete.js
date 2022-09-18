@@ -15,6 +15,7 @@ export default function Complete() {
   // User details
   const userId = user?.sub;
   const userEmail = user?.email;
+  const userPhone = user?.name;
 
   // recoil values
   const firstName = useRecoilValue(firstNameAtom);
@@ -29,6 +30,7 @@ export default function Complete() {
         lastName,
         userId,
         userEmail,
+        userPhone
       });
 
       console.log(res.data);
