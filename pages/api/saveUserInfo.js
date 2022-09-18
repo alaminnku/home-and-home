@@ -1,4 +1,9 @@
-import { getAccessToken, withApiAuthRequired, useUser } from "@auth0/nextjs-auth0";
+import {
+  getAccessToken,
+  withApiAuthRequired,
+  useUser,
+} from "@auth0/nextjs-auth0";
+import { baseUrl } from "@utils/index";
 
 export default withApiAuthRequired(async function products(req, res) {
   const { firstName, lastName } = req.body;
@@ -13,29 +18,26 @@ export default withApiAuthRequired(async function products(req, res) {
   const user_email = "hardcoded-user.email";
 
   // console.log(user);
-  const response = await fetch(
-    "https://az-func-testing.azurewebsites.net/api/user",
-    {
-      method: "post",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
+  const response = await fetch(`${baseUrl}/api/user`, {
+    method: "post",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      data: {
+        user: {
+          id: user_id,
+          first_name: firstName,
+          last_name: lastName,
+          email: user_email,
+          phone: "",
+        },
       },
-      body: JSON.stringify({
-        data: {
-          user:
-          {
-            id: user_id,
-            first_name: firstName,
-            last_name: lastName,
-            email: user_email,
-            phone: ''
-          }
-        }
-      })
-    });
+    }),
+  });
 
   // @Alamin help? How can I return the response?
   // const data = await response.json();
   // res.status(200).json(data);
-  res.status(200).json({"data":"OK"});
+  res.status(200).json({ data: "OK" });
 });

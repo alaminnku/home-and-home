@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 import Hero from "@components/restaurant/Hero";
 import Items from "@components/restaurant/Items";
 import Cart from "@components/layout/Cart";
-import { requireLogin, checkUserType } from "@utils/index";
+import { requireLogin, checkUserType, baseUrl } from "@utils/index";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 function RestaurantPage({ restaurant }) {
   const router = useRouter();
   const { user } = useUser();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     checkUserType(router, user, setIsLoading);
@@ -37,9 +37,7 @@ export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
   // Fetch the restaurant
-  const res = await axios.get(
-    `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
-  );
+  const res = await axios.get(`${baseUrl}/api/restaurant/${restaurantSlug}`);
 
   const restaurant = res.data;
 

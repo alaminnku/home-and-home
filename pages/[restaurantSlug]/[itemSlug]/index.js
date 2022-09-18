@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Item from "@components/item";
-import { createSlug, requireLogin, checkUserType } from "@utils/index";
+import { createSlug, requireLogin, checkUserType, baseUrl } from "@utils/index";
 import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 
 function ItemPage({ item }) {
@@ -32,9 +32,7 @@ export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
   // Fetch the restaurant
-  const res = await axios.get(
-    `https://az-func-testing.azurewebsites.net/api/restaurant/${restaurantSlug}`
-  );
+  const res = await axios.get(`${baseUrl}/api/restaurant/${restaurantSlug}`);
 
   const restaurant = res.data;
 

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { HiPlus } from "react-icons/hi";
 import Swipeable from "@components/layout/Swipeable";
-import { convertNumber } from "@utils/index";
+import { baseUrl, convertNumber } from "@utils/index";
 import styles from "@styles/checkout/Checkout.module.css";
 import axios from "axios";
 import { useOrder } from "@contexts/OrderContext";
@@ -35,7 +35,7 @@ export default function Checkout() {
       try {
         // Post the data to API
         const res = await axios.post(
-          "https://az-func-testing.azurewebsites.net/api/order",
+          `${baseUrl}/api/order`,
           JSON.stringify(order)
         );
 
