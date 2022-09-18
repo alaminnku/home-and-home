@@ -1,7 +1,7 @@
 .user_info {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .complete,
@@ -90,6 +90,8 @@
   background: black;
   height: 50px;
   width: 50px;
+  position: sticky;
+  bottom: 1rem;
   border-radius: 50%;
   display: flex;
   align-items: center;

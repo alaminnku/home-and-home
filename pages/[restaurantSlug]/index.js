@@ -10,7 +10,7 @@ import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 function RestaurantPage({ restaurant }) {
   const router = useRouter();
   const { user } = useUser();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(requireLogin);
 
   useEffect(() => {
     checkUserType(router, user, setIsLoading);

@@ -7,7 +7,7 @@ import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 function CheckoutPage() {
   const { user } = useUser();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(requireLogin);
 
   useEffect(() => {
     checkUserType(router, user, setIsLoading);
