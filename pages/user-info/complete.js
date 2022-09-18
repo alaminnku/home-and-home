@@ -4,30 +4,42 @@ import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { firstNameAtom, lastNameAtom } from "@atoms/userinfo";
+import { useUser } from "@auth0/nextjs-auth0";
 import styles from "@styles/userInfo/UserInfo.module.css";
 
 export default function Complete() {
   // router
   const router = useRouter();
+  const { user } = useUser();
+
+  // User details
+  const userId = user?.sub;
+  const userEmail = user?.email;
 
   // recoil values
   const firstName = useRecoilValue(firstNameAtom);
   const lastName = useRecoilValue(lastNameAtom);
 
   // handle go to main page
-  const handleClick = () => {
-      axios
-        .post("/api/saveUserInfo", {
-          firstName,
-          lastName,
-        })
-        .then(() => {
-          console.log("User created");
-        })
-        .catch((e) => console.log("An error has occurred", e));
+  const handleClick = async () => {
+    try {
+      // Post the data to API
+      const res = await axios.post("/api/saveUserInfo", {
+        firstName,
+        lastName,
+        userId,
+        userEmail,
+      });
 
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+
+    // Save user type to local storage
     localStorage.setItem("type", "existing");
 
+    // Push to the visited URL page
     const visitedURL = JSON.parse(localStorage.getItem("visited-url"));
 
     if (visitedURL) {
