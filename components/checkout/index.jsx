@@ -1,18 +1,22 @@
+import axios from "axios";
 import { useCart } from "@contexts/CartContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { HiPlus } from "react-icons/hi";
 import Swipeable from "@components/layout/Swipeable";
 import { baseUrl, convertNumber } from "@utils/index";
-import styles from "@styles/checkout/Checkout.module.css";
-import axios from "axios";
 import { useOrder } from "@contexts/OrderContext";
+import styles from "@styles/checkout/Checkout.module.css";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export default function Checkout() {
   const router = useRouter();
+  const { user } = useUser();
   const { restaurantSlug } = router.query;
   const { setPlacingOrder, setOrderAttributes } = useOrder();
   const { cartItems, setCartItems, totalCartPrice } = useCart();
+
+  const userId = user?.sub;
 
   // Handle place order
   function handlePlaceOrder() {
@@ -22,25 +26,20 @@ export default function Checkout() {
 
     // After 2 seconds run these codes
     setTimeout(async () => {
-      // Create the order
-      const order = {
-        data: {
-          order: {
-            orderedItems: cartItems,
-            total: totalCartPrice,
-          },
+      const data = {
+        order: {
+          orderedItems: cartItems,
+          total: totalCartPrice,
         },
+        userId,
       };
 
       try {
         // Post the data to API
-        const res = await axios.post(
-          `${baseUrl}/api/order`,
-          JSON.stringify(order)
-        );
+        const res = await axios.post(`/api/placeOrder`, data);
 
         // Update order attributes state
-        setOrderAttributes(res.data.data.attributes);
+        setOrderAttributes(res.data.attributes);
 
         // Push to the order received page
         router.push(`/${restaurantSlug}/order-received`);
