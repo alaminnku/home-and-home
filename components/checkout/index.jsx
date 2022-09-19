@@ -36,7 +36,7 @@ export default function Checkout() {
 
       try {
         // Post the data to API
-        const res = await axios.post(`/api/placeOrder`, data);
+        const res = await axios.post(`/api/place-order`, data);
 
         // Update order attributes state
         setOrderAttributes(res.data.attributes);

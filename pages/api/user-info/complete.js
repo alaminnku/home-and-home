@@ -25,12 +25,12 @@ export default function Complete() {
   const handleClick = async () => {
     try {
       // Post the data to API
-      const res = await axios.post("/api/saveUserInfo", {
+      const res = await axios.post("/api/save-user-info", {
         firstName,
         lastName,
         userId,
         userEmail,
-        userPhone
+        userPhone,
       });
 
       console.log(res.data);
