@@ -30,7 +30,7 @@ export default function Complete() {
         lastName,
         userId,
         userEmail,
-        userPhone
+        userPhone,
       });
 
       console.log(res.data);
