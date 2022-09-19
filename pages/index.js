@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>This is Home and Home's auth page...</h1>
+      <h1>This is Home and Home&apos;s auth page...</h1>
       {isLoading || loading ? (
         <p>Loading</p>
       ) : user ? (
