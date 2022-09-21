@@ -17,8 +17,9 @@ const nextConfig = {
       "instagram.ftru2-2.fna.fbcdn.net",
       "instagram.fczl1-2.fna.fbcdn.net",
       "scontent-ort2-1.cdninstagram.com",
-      'scontent-ord5-1.cdninstagram.com',
-      'scontent-lga3-1.cdninstagram.com'
+      "scontent-ord5-1.cdninstagram.com",
+      "scontent-lga3-1.cdninstagram.com",
+      "i.ibb.co"
     ],
   },
 };
