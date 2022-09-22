@@ -19,7 +19,10 @@ const nextConfig = {
       "scontent-ort2-1.cdninstagram.com",
       "scontent-ord5-1.cdninstagram.com",
       "scontent-lga3-1.cdninstagram.com",
-      "i.ibb.co"
+      "i.ibb.co",
+      "instagram.fixu3-1.fna.fbcdn.net",
+      "scontent-ord5-1.cdninstagram.com",
+      "scontent-lga3-1.cdninstagram.com"
     ],
   },
 };
