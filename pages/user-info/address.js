@@ -19,14 +19,14 @@ export default function Address() {
       <div className={styles.firstname}>
         <div className={styles.input_content}>
           <label>
-          And what's your delivery address?
+          And what&apos;s your delivery address?
             <div>
               <input
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
-            <span className="caveat" style={{fontSize : '12px', paddingTop : '15px'}}> Don't worry! You can always change this later </span>
+            <span className="caveat" style={{fontSize : '12px', paddingTop : '15px'}}> Don&apos;t worry! You can always change this later </span>
           </label>
         </div>
         <span

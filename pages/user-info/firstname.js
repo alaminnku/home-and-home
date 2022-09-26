@@ -21,7 +21,7 @@ export default function Firstname() {
       <div className={styles.firstname}>
         <div className={styles.input_content}>
           <label>
-            What's your good name?
+            What&apos;s your good name?
             <div>
               <input
                 value={firstName}
