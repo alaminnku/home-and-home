@@ -5,7 +5,7 @@ export const firstNameAtom = atom({
   default: "",
 });
 
-export const lastNameAtom = atom({
-  key: "lastname",
+export const addressAtom = atom({
+  key: "address",
   default: "",
 });

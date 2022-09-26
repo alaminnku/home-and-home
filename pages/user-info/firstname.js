@@ -21,7 +21,7 @@ export default function Firstname() {
       <div className={styles.firstname}>
         <div className={styles.input_content}>
           <label>
-            First Name
+            What's your good name?
             <div>
               <input
                 value={firstName}
@@ -32,7 +32,7 @@ export default function Firstname() {
         </div>
         <span
           className={styles.next}
-          onClick={() => router.push("/user-info/lastname")}
+          onClick={() => router.push("/user-info/address")}
         >
           <FaChevronRight />
         </span>

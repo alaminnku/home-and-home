@@ -3,7 +3,7 @@ import Steps from "@components/steps";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { firstNameAtom, lastNameAtom } from "@atoms/userinfo";
+import { firstNameAtom, addressAtom } from "@atoms/userinfo";
 import { useUser } from "@auth0/nextjs-auth0";
 import styles from "@styles/userInfo/UserInfo.module.css";
 
@@ -19,7 +19,7 @@ export default function Complete() {
 
   // recoil values
   const firstName = useRecoilValue(firstNameAtom);
-  const lastName = useRecoilValue(lastNameAtom);
+  const address = useRecoilValue(addressAtom);
 
   // handle go to main page
   const handleClick = async () => {
@@ -27,7 +27,7 @@ export default function Complete() {
       // Post the data to API
       const res = await axios.post("/api/save-user-info", {
         firstName,
-        lastName,
+        address,
         userId,
         userEmail,
         userPhone,
@@ -57,7 +57,8 @@ export default function Complete() {
         <div className={styles.content}>
           <h6>Hello!</h6>
           <p>
-            {firstName} {lastName}
+          {firstName}
+            {/* {firstName} {lastName} */}
           </p>
           <span className={styles.proceeding}>
             By proceeding you accept our <a>terms</a> & <a>conditions</a>
