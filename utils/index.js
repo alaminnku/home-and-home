@@ -10,6 +10,7 @@ export const requireLogin = true;
 
 // Base API URL
 export const baseUrl = "https://az-func-testing.azurewebsites.net";
+// export const baseUrl = "http://localhost:7071";
 
 // Check the user type
 export function checkUserType(router, user, setIsLoading) {
