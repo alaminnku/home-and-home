@@ -26,8 +26,7 @@ export default function Address() {
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
-            {/* <p style="font-size: x-small">Don't worry, you can change this later</p>   */}
-            <span className="myClass" style={{fontSize : '12px', paddingTop : '15px'}} > Don't worry! You can always change this later </span>
+            <span className="caveat" style={{fontSize : '12px', paddingTop : '15px'}}> Don't worry! You can always change this later </span>
           </label>
         </div>
         <span
