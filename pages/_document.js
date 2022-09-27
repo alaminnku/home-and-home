@@ -27,7 +27,7 @@ class CustomDocument extends Document {
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "dtuwyaz2yk");`,
             }}
-            />;
+            />
         </Head>
 
         <body>
