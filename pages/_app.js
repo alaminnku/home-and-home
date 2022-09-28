@@ -3,6 +3,7 @@ import { OrderProvider } from "@contexts/OrderContext";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import { RecoilRoot } from "recoil";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { ExistingUserProvider } from "@contexts/ExistingUserContext";
 import "@styles/globals.css";
 
 export default function MyApp({ Component, pageProps }) {
@@ -13,15 +14,17 @@ export default function MyApp({ Component, pageProps }) {
       borderRadius="0.5rem"
       duration={4}
     >
-      <OrderProvider>
-        <UserProvider>
-          <RecoilRoot>
-            <CartProvider>
-              <Component {...pageProps} />
-            </CartProvider>
-          </RecoilRoot>
-        </UserProvider>
-      </OrderProvider>
+      <UserProvider>
+        <ExistingUserProvider>
+          <OrderProvider>
+            <RecoilRoot>
+              <CartProvider>
+                <Component {...pageProps} />
+              </CartProvider>
+            </RecoilRoot>
+          </OrderProvider>
+        </ExistingUserProvider>
+      </UserProvider>
     </SkeletonTheme>
   );
 }

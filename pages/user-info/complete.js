@@ -5,12 +5,14 @@ import { useRecoilValue } from "recoil";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { firstNameAtom, addressAtom } from "@atoms/userinfo";
 import { useUser } from "@auth0/nextjs-auth0";
+import { useExistingUser } from "@contexts/ExistingUserContext";
 import styles from "@styles/userInfo/UserInfo.module.css";
 
 export default function Complete() {
-  // router
+  // router and hooks
   const router = useRouter();
   const { user } = useUser();
+  const { setExistingUser } = useExistingUser();
 
   // User details
   const userId = user?.sub;
@@ -33,7 +35,8 @@ export default function Complete() {
         userPhone,
       });
 
-      console.log(res.data);
+      // Update the state
+      setExistingUser(res.data.attributes.user);
     } catch (err) {
       console.log(err);
     }
@@ -57,7 +60,7 @@ export default function Complete() {
         <div className={styles.content}>
           <h6>Hello!</h6>
           <p>
-          {firstName}
+            {firstName}
             {/* {firstName} {lastName} */}
           </p>
           <span className={styles.proceeding}>

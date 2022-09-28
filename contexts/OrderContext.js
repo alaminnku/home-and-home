@@ -1,10 +1,4 @@
-import {
-  useEffect,
-  useCallback,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useContext, useState } from "react";
 
 const OrderContext = createContext();
 

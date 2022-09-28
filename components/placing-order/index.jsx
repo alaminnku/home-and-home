@@ -5,11 +5,13 @@ import { useOrder } from "@contexts/OrderContext";
 import { useRouter } from "next/router";
 import MoonLoader from "react-spinners/MoonLoader";
 import styles from "@styles/placing-order/PlacingOrder.module.css";
+import { useExistingUser } from "@contexts/ExistingUserContext";
 
 export default function PlacingOrder() {
   const router = useRouter();
   const { restaurantSlug } = router.query;
   const { cartItems } = useCart();
+  const { existingUser } = useExistingUser();
   const { placingOrder } = useOrder();
 
   // If placing order is false
@@ -29,7 +31,7 @@ export default function PlacingOrder() {
 
       <div className={styles.items_top}>
         <BiCheck />
-        <p>Your order, name</p>
+        <p>Your order, {existingUser?.first_name}</p>
       </div>
 
       <div className={styles.items}>
