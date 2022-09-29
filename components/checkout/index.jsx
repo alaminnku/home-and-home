@@ -28,6 +28,7 @@ export default function Checkout() {
     setTimeout(async () => {
       const data = {
         order: {
+          restaurantId: restaurantSlug,
           orderedItems: cartItems,
           total: totalCartPrice,
         },
