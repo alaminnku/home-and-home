@@ -56,7 +56,6 @@
 
 .special_instructions {
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border_color);
 }
 
 .special_instructions p {
@@ -65,13 +64,15 @@
   padding: 0.5rem 1rem;
 }
 
-.special_instructions input {
-  padding: 1rem;
+.special_instructions textarea {
+  padding: 0.5rem 1rem;
   width: 100%;
+  resize: none;
   color: var(--grey);
+  border-bottom: 1px solid var(--border_color);
 }
 
-.special_instructions input:focus {
+.special_instructions textarea:focus {
   outline: none;
 }
 

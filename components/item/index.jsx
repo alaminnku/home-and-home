@@ -98,8 +98,8 @@ export default function Item({ item }) {
 
         <div className={styles.special_instructions}>
           <p>Special instructions</p>
-          <input
-            type="text"
+          <textarea
+            rows={3}
             name="note"
             value={note}
             onChange={handleChange}

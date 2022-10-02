@@ -29,8 +29,8 @@
 }
 
 .items .note {
-  width: 70%;
-  margin: 0 auto;
+  margin-left: 2.5rem;
+  margin-right: 3.75rem;
   color: var(--grey);
   margin-bottom: 1rem;
   overflow: hidden;

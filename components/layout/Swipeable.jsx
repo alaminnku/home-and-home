@@ -103,8 +103,8 @@ export default function Swipeable({ items, showNote }) {
   return (
     <div className={styles.items}>
       {items.map((item) => (
-        <div className={styles.item_with_note}>
-          <div key={item.id} className={styles.item_and_action}>
+        <div key={item.id} className={styles.item_with_note}>
+          <div className={styles.item_and_action}>
             <div
               id={item.id}
               className={`${styles.item}`}
