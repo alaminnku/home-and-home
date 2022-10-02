@@ -12,6 +12,8 @@ export default function Items({ restaurant, isLoading }) {
   const { restaurantSlug } = router.query;
   const { isOpen, openCart, cartItems, totalCartQuantity } = useCart();
 
+  console.log(cartItems);
+
   return (
     <section className={styles.categories}>
       {restaurant.categories.map((category, index) => (

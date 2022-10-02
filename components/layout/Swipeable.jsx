@@ -4,7 +4,7 @@ import { convertNumber, createSlug } from "@utils/index";
 import { useCart } from "@contexts/CartContext";
 import styles from "@styles/layout/Swipeable.module.css";
 
-export default function Swipeable({ items }) {
+export default function Swipeable({ items, showNote }) {
   const router = useRouter();
   const [swipedItems, setSwipedItems] = useState([]);
   const [verticalStart, setVerticalStart] = useState(0);
@@ -103,34 +103,39 @@ export default function Swipeable({ items }) {
   return (
     <div className={styles.items}>
       {items.map((item) => (
-        <div key={item.id} className={styles.item_and_action}>
-          <div
-            id={item.id}
-            className={`${styles.item}`}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div className={styles.quantity_and_name}>
-              <p className={styles.quantity}>{item.quantity}</p>
-              <p
-                className={styles.name}
-                onClick={() => pushToTheItemPage(item.name)}
-              >
-                {item.name}
+        <div className={styles.item_with_note}>
+          <div key={item.id} className={styles.item_and_action}>
+            <div
+              id={item.id}
+              className={`${styles.item}`}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className={styles.quantity_and_name}>
+                <p className={styles.quantity}>{item.quantity}</p>
+                <p
+                  className={styles.name}
+                  onClick={() => pushToTheItemPage(item.name)}
+                >
+                  {item.name}
+                </p>
+              </div>
+
+              <p className={styles.price}>
+                LKR {convertNumber(item.price * item.quantity)}
               </p>
             </div>
 
-            <p className={styles.price}>
-              LKR {convertNumber(item.price * item.quantity)}
+            <p
+              onClick={() => removeItemFromCart(item.id)}
+              className={styles.action}
+            >
+              Remove
             </p>
           </div>
-
-          <p
-            onClick={() => removeItemFromCart(item.id)}
-            className={styles.action}
-          >
-            Remove
-          </p>
+          {showNote && item.note && (
+            <p className={styles.note}>Note: {item.note}</p>
+          )}
         </div>
       ))}
     </div>

@@ -30,6 +30,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       res.status(200).json(response.data.data);
     } catch (err) {
       console.log(err);
+      res.status(404).json(err.response);
     }
   } else {
     // If the request is not a POST request

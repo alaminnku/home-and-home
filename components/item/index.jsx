@@ -20,12 +20,15 @@ export default function Item({ item }) {
     description: item.description,
     image: item.image,
     quantity: 1,
+    note: "",
     price: parseFloat(item.price),
     total: parseFloat(item.price),
   });
 
+  console.log(initialItem);
+
   // Quantity and price
-  const { quantity, price } = initialItem;
+  const { quantity, price, note } = initialItem;
 
   // Update item in cart
   useEffect(() => {
@@ -38,8 +41,17 @@ export default function Item({ item }) {
       ...prevItem,
       quantity: itemInCart?.quantity || 1,
       total: itemInCart?.total || prevItem.total,
+      note: itemInCart?.note || prevItem.note,
     }));
   }, [itemInCart]);
+
+  // Handle change
+  function handleChange(e) {
+    setInitialItem((prevData) => ({
+      ...prevData,
+      note: e.target.value,
+    }));
+  }
 
   // Increase quantity
   function increaseQuantity() {
@@ -82,6 +94,17 @@ export default function Item({ item }) {
         <div className={styles.header}>
           <h1 className={styles.title}>{item.name}</h1>
           <p className={styles.description}>{item.description}</p>
+        </div>
+
+        <div className={styles.special_instructions}>
+          <p>Special instructions</p>
+          <input
+            type="text"
+            name="note"
+            value={note}
+            onChange={handleChange}
+            placeholder="Write instructions here"
+          />
         </div>
 
         <div className={styles.controller}>

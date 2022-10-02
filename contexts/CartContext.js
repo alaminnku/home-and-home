@@ -49,6 +49,7 @@ export function CartProvider({ children }) {
             ...cartItem,
             quantity: initialItem.quantity,
             total: initialItem.total,
+            note: initialItem.note,
           };
         } else {
           return cartItem;
@@ -96,9 +97,6 @@ export function CartProvider({ children }) {
     cartItems.length > 1 && openCart();
   }
 
-  // Checkout cart
-  function checkoutCart() {}
-
   return (
     <CartContext.Provider
       value={{
@@ -112,7 +110,6 @@ export function CartProvider({ children }) {
         addItemToCart,
         removeItemFromCart,
         removeItemFromPage,
-        checkoutCart,
       }}
     >
       {children}

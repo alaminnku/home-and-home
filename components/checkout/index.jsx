@@ -70,7 +70,7 @@ export default function Checkout() {
           </Link>
         </div>
 
-        <Swipeable items={cartItems} />
+        <Swipeable items={cartItems} showNote={true} />
 
         <div className={styles.add_items}>
           <Link href={`/${restaurantSlug}`}>

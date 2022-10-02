@@ -54,6 +54,27 @@
   font-weight: 700;
 }
 
+.special_instructions {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border_color);
+}
+
+.special_instructions p {
+  background: var(--border_color);
+  font-size: var(--button_font);
+  padding: 0.5rem 1rem;
+}
+
+.special_instructions input {
+  padding: 1rem;
+  width: 100%;
+  color: var(--grey);
+}
+
+.special_instructions input:focus {
+  outline: none;
+}
+
 .controller {
   margin-bottom: 1.5rem;
   display: flex;
