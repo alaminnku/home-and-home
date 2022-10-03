@@ -25,8 +25,6 @@ export default function Item({ item }) {
     total: parseFloat(item.price),
   });
 
-  console.log(initialItem);
-
   // Quantity and price
   const { quantity, price, note } = initialItem;
 
@@ -97,10 +95,10 @@ export default function Item({ item }) {
         </div>
 
         <div className={styles.special_instructions}>
-          <p>Special instructions</p>
+          <label htmlFor="note">Special instructions</label>
           <textarea
             rows={3}
-            name="note"
+            id="note"
             value={note}
             onChange={handleChange}
             placeholder="Write instructions here"

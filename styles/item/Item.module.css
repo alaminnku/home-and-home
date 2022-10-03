@@ -58,10 +58,12 @@
   margin-bottom: 1.5rem;
 }
 
-.special_instructions p {
+.special_instructions label {
+  width: 100%;
+  display: inline-block;
+  padding: 0.875rem 1rem;
   background: var(--border_color);
   font-size: var(--button_font);
-  padding: 0.5rem 1rem;
 }
 
 .special_instructions textarea {
@@ -74,6 +76,7 @@
 
 .special_instructions textarea:focus {
   outline: none;
+  box-shadow: 0px 4px 1.5rem rgba(0, 0, 0, 0.1);
 }
 
 .controller {
