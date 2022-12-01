@@ -1,4 +1,5 @@
-import axios from "axios";
+import fs from "fs";
+import path from "path";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Item from "@components/item";
@@ -31,10 +32,16 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug, itemSlug } = params;
 
-  // Fetch the restaurant
-  const res = await axios.get(`${baseUrl}/api/restaurant/${restaurantSlug}`);
+  // Get the restaurant
+  const restaurantFile = fs
+    .readdirSync(path.join("data"))
+    .find((fileName) => fileName === `${restaurantSlug}.json`);
 
-  const restaurant = res.data;
+  // Get the data
+  const data = fs.readFileSync(path.join("data", restaurantFile), "utf-8");
+
+  // Parse the data
+  const restaurant = JSON.parse(data);
 
   // Get the initial item
   const initialItem = restaurant.categories
