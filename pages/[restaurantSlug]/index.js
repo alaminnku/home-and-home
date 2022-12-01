@@ -1,4 +1,5 @@
-import axios from "axios";
+import fs from "fs";
+import path from "path";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Hero from "@components/restaurant/Hero";
@@ -36,10 +37,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { restaurantSlug } = params;
 
-  // Fetch the restaurant
-  const res = await axios.get(`${baseUrl}/api/restaurant/${restaurantSlug}`);
+  // Get the file with restaurant slug
+  const data = fs.readFileSync(
+    path.join("data", `${restaurantSlug}.json`),
+    "utf-8"
+  );
 
-  const restaurant = res.data;
+  // Parse the data
+  const restaurant = JSON.parse(data);
 
   // Return notFound is not restaurant is found
   if (!restaurant) {
