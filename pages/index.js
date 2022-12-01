@@ -30,8 +30,8 @@ export default function Home() {
   }, [router, user]);
 
   return (
-    <div className={styles.container}>
-      <h1>This is Home and Home&apos;s auth page...</h1>
+    <main className={styles.home}>
+      <h1>Welcome to Home and Home</h1>
       {isLoading || loading ? (
         <p>Loading</p>
       ) : user ? (
@@ -44,11 +44,17 @@ export default function Home() {
           <h2>user.sub = {user.sub}</h2>
         </>
       ) : (
-        <Link href="/api/auth/login">
-          <a>Login</a>
-        </Link>
+        <div className={styles.buttons}>
+          <Link href="/api/auth/login">
+            <a>Login</a>
+          </Link>
+
+          <Link href="/chinese-dragon-cafe">
+            <a>Visit Chinese Dragon Cafe</a>
+          </Link>
+        </div>
       )}
       {error ? <h4>{error.message}</h4> : ""}
-    </div>
+    </main>
   );
 }
