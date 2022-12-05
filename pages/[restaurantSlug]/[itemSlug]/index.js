@@ -23,9 +23,36 @@ function ItemPage({ item }) {
 }
 
 export async function getStaticPaths() {
+  // Get all restaurants data
+  const restaurants = fs
+    .readdirSync(path.join("data"))
+    .map((restaurantName) => {
+      // Get raw data
+      const data = fs.readFileSync(path.join("data", restaurantName), "utf-8");
+
+      // Returned parsed data
+      return JSON.parse(data);
+    });
+
+  // Get all restaurant's name and items
+  const paths = restaurants
+    .map((restaurant) => {
+      return restaurant.categories.map((category) => {
+        return category.items.map((item) => {
+          return {
+            params: {
+              itemSlug: createSlug(item.name),
+              restaurantSlug: createSlug(restaurant.name),
+            },
+          };
+        });
+      });
+    })
+    .flat(2);
+
   return {
-    paths: [],
-    fallback: "blocking",
+    paths,
+    fallback: false,
   };
 }
 

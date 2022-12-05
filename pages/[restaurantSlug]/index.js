@@ -27,10 +27,17 @@ function RestaurantPage({ restaurant }) {
 }
 
 export async function getStaticPaths() {
-  // Return the array of slugs
+  // Paths
+  const paths = fs.readdirSync(path.join("data")).map((fileName) => {
+    return {
+      params: { restaurantSlug: fileName.replace(".json", "") },
+    };
+  });
+
+  // Return the array of paths
   return {
-    paths: [],
-    fallback: "blocking",
+    paths,
+    fallback: false,
   };
 }
 
